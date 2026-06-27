@@ -1369,10 +1369,6 @@ impl BackendState {
                         offline: true,
                         head: None
                     });
-                    account_info.account_order.retain(|account_uuid| account_info.accounts.contains_key(account_uuid));
-                    if !account_info.account_order.contains(&uuid) {
-                        account_info.account_order.push(uuid);
-                    }
                     account_info.selected_account = Some(uuid);
                 });
             },
@@ -1392,8 +1388,7 @@ impl BackendState {
                 let mut account_info = self.account_info.write();
 
                 account_info.modify(|account_info| {
-                    account_info.accounts.remove(&uuid);
-                    account_info.account_order.retain(|account_uuid| *account_uuid != uuid);
+                    account_info.accounts.shift_remove(&uuid);
                     if account_info.selected_account == Some(uuid) {
                         account_info.selected_account = None;
                     }
@@ -1402,19 +1397,11 @@ impl BackendState {
             MessageToBackend::ReorderAccounts { from_index, to_index } => {
                 let mut account_info = self.account_info.write();
                 account_info.modify(|account_info| {
-                    account_info.account_order.retain(|account_uuid| account_info.accounts.contains_key(account_uuid));
-                    for uuid in account_info.accounts.keys() {
-                        if !account_info.account_order.contains(uuid) {
-                            account_info.account_order.push(*uuid);
-                        }
-                    }
-
-                    if from_index >= account_info.account_order.len() || to_index >= account_info.account_order.len() || from_index == to_index {
+                    if from_index >= account_info.accounts.len() || to_index >= account_info.accounts.len() || from_index == to_index {
                         return;
                     }
 
-                    let uuid = account_info.account_order.remove(from_index);
-                    account_info.account_order.insert(to_index, uuid);
+                    account_info.accounts.move_index(from_index, to_index);
                 });
             },
             MessageToBackend::SetOpenGameOutputAfterLaunching { value } => {
@@ -2269,7 +2256,6 @@ impl BackendState {
             if !info.accounts.contains_key(&profile.id) {
                 let account = BackendAccount::new_from_profile(profile);
                 info.accounts.insert(profile.id, account);
-                info.account_order.push(profile.id);
             }
 
             if select {

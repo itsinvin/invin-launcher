@@ -121,10 +121,7 @@ pub fn start(runtime: tokio::runtime::Runtime, launcher_dir: PathBuf, send: Fron
     state_file_watching.watch_filesystem(directories.root_launcher_dir.clone(), WatchTarget::RootDir);
 
     // Load accounts
-    let mut account_info = Persistent::load(directories.accounts_json.clone());
-    account_info.modify(|account_info: &mut BackendAccountInfo| {
-        account_info.normalize_account_order();
-    });
+    let account_info = Persistent::load(directories.accounts_json.clone());
 
     let state = BackendState {
         self_handle,

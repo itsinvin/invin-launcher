@@ -2,7 +2,7 @@ use std::sync::Arc;
 
 use auth::models::MinecraftAccessToken;
 use bridge::{account::Account, message::MessageToFrontend};
-use rustc_hash::FxHashMap;
+use indexmap::IndexMap;
 use schema::{minecraft_profile::MinecraftProfileResponse, unique_bytes::UniqueBytes};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -15,41 +15,14 @@ pub struct MinecraftLoginInfo {
 
 #[derive(Default, Debug, Serialize, Deserialize)]
 pub struct BackendAccountInfo {
-    pub accounts: FxHashMap<Uuid, BackendAccount>,
-    #[serde(default)]
-    pub account_order: Vec<Uuid>,
+    pub accounts: IndexMap<Uuid, BackendAccount>,
     pub selected_account: Option<Uuid>,
 }
 
 impl BackendAccountInfo {
-    pub fn ensure_account_order(&self) -> Vec<Uuid> {
-        let mut order = self.account_order.clone();
-        order.retain(|uuid| self.accounts.contains_key(uuid));
-
-        for uuid in self.accounts.keys() {
-            if !order.contains(uuid) {
-                order.push(*uuid);
-            }
-        }
-
-        if self.account_order.is_empty() {
-            order.sort_by(|a, b| {
-                let a_name = self.accounts.get(a).map(|a| a.username.as_ref()).unwrap_or("");
-                let b_name = self.accounts.get(b).map(|a| a.username.as_ref()).unwrap_or("");
-                lexical_sort::natural_lexical_cmp(a_name, b_name)
-            });
-        }
-
-        order
-    }
-
-    pub fn normalize_account_order(&mut self) {
-        self.account_order = self.ensure_account_order();
-    }
-
     pub fn create_update_message(&self) -> MessageToFrontend {
         let mut accounts = Vec::with_capacity(self.accounts.len());
-        for uuid in self.ensure_account_order() {
+        for uuid in self.accounts.keys().copied() {
             let Some(account) = self.accounts.get(&uuid) else {
                 continue;
             };
