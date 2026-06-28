@@ -56,6 +56,11 @@ pub enum LaunchError {
     MissingFileInZipError(Cow<'static, str>),
     #[error("Failed to find version: {0}")]
     CantFindVersion(&'static str),
+    #[error("Can't find {loader:?} version for minecraft {minecraft}")]
+    CantFindLoader {
+        loader: Loader,
+        minecraft: &'static str
+    },
     #[error("Invalid instance name: {0}")]
     InvalidInstanceName(&'static str),
     #[error("Error running forge post processor")]
@@ -286,7 +291,11 @@ impl Launcher {
                         if latest_loader_version.is_none() {
                             latest_loader_version = manifest.0.first();
                         }
-                        Ok(latest_loader_version.unwrap().version)
+                        if let Some(latest_loader_version) = latest_loader_version {
+                            Ok(latest_loader_version.version)
+                        } else {
+                            Err(LaunchError::CantFindLoader { loader: Loader::Fabric, minecraft: instance_info.minecraft_version.as_str() })
+                        }
                     }
                 };
 
