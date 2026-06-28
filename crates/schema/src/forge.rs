@@ -164,7 +164,7 @@ impl LegacyVersionInfo {
 }
 
 #[derive(Debug)]
-pub struct ForgeMavenManifest(pub(crate) Vec<Ustr>);
+pub struct ForgeMavenManifest(pub Vec<Ustr>);
 
 #[derive(Debug)]
-pub struct NeoforgeMavenManifest(pub(crate) Vec<Ustr>);
+pub struct NeoforgeMavenManifest(pub Vec<Ustr>);
