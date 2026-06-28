@@ -40,7 +40,7 @@ pub mod account {
         }
         pub fn error() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Fehler beim Konto hinzufügen",
+                1 => "Fehler beim Hinzufügen des Kontos",
                 2 => "Hiba történt a fiók hozzáadásakor",
                 3 => "Kunde ej lägga till konto",
                 _ => "Error adding account",
@@ -56,7 +56,7 @@ pub mod account {
         }
         pub fn offline() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Offline Konto hinzufügen",
+                1 => "Offline-Konto hinzufügen",
                 2 => "Offline fiók hozzáadása",
                 3 => "Lägg till offline-konto",
                 _ => "Add Offline Account",
@@ -161,7 +161,7 @@ pub mod common {
     }
     pub fn apply_changes() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Veränderungen anwenden",
+            1 => "Änderungen übernehmen",
             2 => "Változtatások alkalmazása",
             3 => "Applicera förändringarna",
             _ => "Apply Changes",
@@ -201,7 +201,7 @@ pub mod common {
     }
     pub fn latest() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Neuste",
+            1 => "Neueste",
             2 => "Legújabb",
             3 => "Nyast",
             _ => "Latest",
@@ -386,7 +386,7 @@ pub mod curseforge {
         }
         pub fn popularity() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Popularität",
+                1 => "Beliebtheit",
                 2 => "Népszerűség",
                 3 => "Populäritet",
                 _ => "Popularity",
@@ -422,7 +422,7 @@ pub mod file_system {
         }
         pub fn not_a_directory() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Konnte Ordner nicht öffnen: ist kein Ordner",
+                1 => "Konnte Ordner nicht öffnen: ist kein Verzeichnis",
                 2 => "Nem sikerült megnyitni a mappát: nem egy mappa",
                 3 => "Kunde ej öppna foldern: inte en katalog",
                 _ => "Unable to open folder: not a directory",
@@ -434,7 +434,7 @@ pub mod file_system {
 pub mod import {
     pub fn disabled(launcher: &str) -> String {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => format!("Bitte wähle etwas oben aus um es von {launcher} zu importieren"),
+            1 => format!("Bitte wähle eine der Optionen aus, um es von {launcher} zu importieren"),
             2 => format!("Kérlek válassz egyet a fentiek közül, hogy importálj innen: {launcher}"),
             3 => format!("Var vänlig och välj något av de ovanstående för att importera från {launcher}"),
             _ => format!("Please select one of the above to import from {launcher}"),
@@ -442,7 +442,7 @@ pub mod import {
     }
     pub fn enabled(launcher: &str) -> String {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => format!("Importiere das oben ausgewählte von {launcher}"),
+            1 => format!("Importiere das oben Ausgewählte von {launcher}"),
             2 => format!("A fentiek közül kiválasztottak importálása innen: {launcher}"),
             3 => format!("Importera det valda ovanstående från {launcher}"),
             _ => format!("Import the above selected from {launcher}"),
@@ -572,7 +572,7 @@ pub mod instance {
         }
         pub fn error_loading() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Fehler beim laden vom Projekt",
+                1 => "Fehler beim Laden vom Projekt",
                 2 => "Hiba a projekt betöltésekor",
                 3 => "Fel vid laddning av projekt",
                 _ => "Error loading project",
@@ -624,7 +624,7 @@ pub mod instance {
             }
             pub fn always_latest() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Installiert immer die neuste Version. Deaktivieren um ältere Versionen installieren zu können",
+                    1 => "Installiert immer die neuste Version. Deaktivieren, um ältere Versionen installieren zu können",
                     2 => "Mindíg a legújabb telepítése. Szedd ki a pipát, hogy régebbi verziót tudj telepíteni",
                     3 => "Installera alltid den senaste versionen. Avmarkera om du vill kunna välja äldre versioner av innehåll att installera.",
                     _ => "Always install the latest version. Untick to be able to choose older versions of content to install",
@@ -632,7 +632,7 @@ pub mod instance {
             }
             pub fn error() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Fehler beim installieren von Inhalt",
+                    1 => "Fehler beim Installieren von Inhalt",
                     2 => "Hiba a tartalom telepítésekor",
                     3 => "Fel vid installation av innehåll",
                     _ => "Error installing content",
@@ -640,7 +640,7 @@ pub mod instance {
             }
             pub fn from_curseforge() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Von Curseforge hinzufügen",
+                    1 => "Aus CurseForge hinzufügen",
                     2 => "Hozzáadás Curseforgeról",
                     3 => "Lägg till från Curseforge",
                     _ => "Add from Curseforge",
@@ -648,7 +648,7 @@ pub mod instance {
             }
             pub fn from_file() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Von Datei hinzufügen",
+                    1 => "Aus Datei hinzufügen",
                     2 => "Hozzáadás fájlból",
                     3 => "Lägg till från fil",
                     _ => "Add from file",
@@ -656,7 +656,7 @@ pub mod instance {
             }
             pub fn from_modrinth() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Von Modrinth hinzufügen",
+                    1 => "Aus Modrinth hinzufügen",
                     2 => "Hozzáadás Modrinthről",
                     3 => "Lägg till från Modrinth",
                     _ => "Add from Modrinth",
@@ -672,7 +672,7 @@ pub mod instance {
             }
             pub fn install_dependency() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Installiere 1 Abhängigkeit",
+                    1 => "Installiere eine Abhängigkeit",
                     2 => "1 függőség telepítése",
                     3 => "Installera 1 beroende",
                     _ => "Install 1 dependency",
@@ -680,7 +680,7 @@ pub mod instance {
             }
             pub fn invalid_filename() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Invalieder/Gefährlicher Dateinname",
+                    1 => "Invalider/Gefährlicher Dateinname",
                     2 => "Érvénytelen/veszélyes fájlnév",
                     3 => "Ogilgit/farligt filnamn",
                     _ => "Invalid/dangerous filename",
@@ -696,7 +696,7 @@ pub mod instance {
             }
             pub fn latest() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Installiere neuste Version",
+                    1 => "Installiere neueste Version",
                     2 => "Legújabb telepítése",
                     3 => "Installerar nyaste",
                     _ => "Install Latest",
@@ -704,7 +704,7 @@ pub mod instance {
             }
             pub fn missing_sha1_hash() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Fehlender sha1 Hash",
+                    1 => "Fehlender sha1-Hash",
                     2 => "Hiányzik az sha1 hash",
                     3 => "saknad sha1-hash",
                     _ => "Missing sha1 hash",
@@ -732,7 +732,7 @@ pub mod instance {
                 }
                 pub fn mod_() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Erstelle neue Instanz mit dieser Mod",
+                        1 => "Erstelle eine neue Instanz mit dieser Mod",
                         2 => "Új példány létrehozása ezzel a moddal",
                         3 => "Skapa en ny instans med detta mod",
                         _ => "Create new instance with this mod",
@@ -781,7 +781,7 @@ pub mod instance {
             }
             pub fn no_third_party_downloads() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Der Mod Autor hat das herunterladen von Drittanbietern blockiert",
+                    1 => "Der Mod-Autor hat das Herunterladen von Drittanbietern blockiert",
                     2 => "A mod készítője letiltotta a harmadik féltől származó indítókon keresztüli letöltéseket",
                     3 => "Modförfattaren har blockerat nedladdningar från tredjeparts launchers",
                     _ => "The mod author has blocked downloads from third-party launchers",
@@ -805,7 +805,7 @@ pub mod instance {
             }
             pub fn select_resourcepacks() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Wähle Ressourcenpakete aus um sie zu installieren",
+                    1 => "Wähle Ressourcenpakete zum Installieren aus",
                     2 => "Válaszd ki a telepíteni kívánt forráscsomagokat",
                     3 => "Välj resurspaket att installera",
                     _ => "Select resource packs to install",
@@ -813,6 +813,7 @@ pub mod instance {
             }
             pub fn select_shaders() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                    1 => "Wähle Shader zum Installieren aus",
                     2 => "Válassz egy telepíteni kívánt shadert",
                     3 => "Välj shaders att installera",
                     _ => "Select shaders to install",
@@ -836,7 +837,7 @@ pub mod instance {
             }
             pub fn unable_other_type() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Konnte Projektart „anderes“ nicht Installieren",
+                    1 => "Konnte Projektart „anderes“ nicht installieren",
                     2 => "Nem lehet telepíteni a 'más' projekt típust",
                     3 => "Det gick inte att installera projekttypen 'annan'",
                     _ => "Unable to install 'other' project type",
@@ -844,7 +845,7 @@ pub mod instance {
             }
             pub fn unknown_type() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Keine Ahnung wie man diesem Typ von Inhalt installiert",
+                    1 => "Keine Ahnung, wie man mit diesem Inhaltstyp umgeht",
                     2 => "Nem lehet kezelni ezt a típúsú tartalmat",
                     3 => "Vet ej hur man hanterar denna typ av innehåll",
                     _ => "Don't know how to handle this type of content",
@@ -908,7 +909,7 @@ pub mod instance {
                 }
                 pub fn not_found() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Keine Mod Versionen gefunden",
+                        1 => "Keine Modversionen gefunden",
                         2 => "Nem találhatók mod verziók",
                         3 => "Inga mod versioner hittade",
                         _ => "No mod versions found",
@@ -916,7 +917,7 @@ pub mod instance {
                 }
                 pub fn not_found_for(ver: &str) -> String {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => format!("Keine Mod Version für {ver} gefunden"),
+                        1 => format!("Keine Modversion für {ver} gefunden"),
                         2 => format!("Nem található mod verzió a(z) {ver} verzióhoz"),
                         3 => format!("Inga mod versioner hittade för {ver}"),
                         _ => format!("No mod versions found for {ver}"),
@@ -924,7 +925,7 @@ pub mod instance {
                 }
                 pub fn not_found_for_loader(loader: &str, ver: &str) -> String {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => format!("Keine Mod Version für {loader} {ver} gefunden"),
+                        1 => format!("Keine Modversion für {loader} {ver} gefunden"),
                         2 => format!("Nem található verzió a(z) {loader} {ver} loaderhez"),
                         3 => format!("Inga mod versioner hittade för {loader} {ver}"),
                         _ => format!("No mod versions found for {loader} {ver}"),
@@ -932,7 +933,7 @@ pub mod instance {
                 }
                 pub fn title() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Lade Mod Versionen...",
+                        1 => "Lade Modversionen...",
                         2 => "Mod verziók betöltése",
                         3 => "Laddar mod versioner...",
                         _ => "Loading mod versions...",
@@ -949,7 +950,7 @@ pub mod instance {
                 }
                 pub fn error(err: &str) -> String {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => format!("Fehler beim laden von Projektversionen von Modrinth: {err}"),
+                        1 => format!("Fehler beim Laden von Projektversionen von Modrinth: {err}"),
                         2 => format!("Hiba a projekt verziók betöltésekor a Modrinthről: {err}"),
                         3 => format!("Fel vid laddning av projektversioner från Modrinth: {err}"),
                         _ => format!("Error loading project versions from Modrinth: {err}"),
@@ -1076,7 +1077,7 @@ pub mod instance {
         }
         pub fn shaders() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Shaders",
+                1 => "Shader",
                 2 => "Shaderek",
                 3 => "Shaders",
                 _ => "Shaders",
@@ -1109,7 +1110,7 @@ pub mod instance {
             }
             pub fn gallery() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Gallerie",
+                    1 => "Galerie",
                     2 => "Galéria",
                     3 => "Galleri",
                     _ => "Gallery",
@@ -1158,7 +1159,7 @@ pub mod instance {
                 }
                 pub fn error() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Fehler beim suchen nach Aktualisierungen",
+                        1 => "Fehler beim Suchen nach Updates",
                         2 => "Hiba a frissítések keresése közben",
                         3 => "Fel vid sökandet efter uppdateringar",
                         _ => "Error checking for updates",
@@ -1166,7 +1167,7 @@ pub mod instance {
                 }
                 pub fn error_404() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Fehler beim suchen nach Aktualisierungen - 404 nicht gefunden",
+                        1 => "Fehler beim Suchen nach Updates - 404 nicht gefunden",
                         2 => "Hiba a frissítések keresése közben - 404 nem található",
                         3 => "Fel vid sökandet efter uppdateringar - 404 hittades ej",
                         _ => "Error while checking updates - 404 not found",
@@ -1174,7 +1175,7 @@ pub mod instance {
                 }
                 pub fn invalid_hash_error() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Fehler beim suchen nach Aktualisierungen - falscher hash",
+                        1 => "Fehler beim Suchen nach Updates - falscher Hash",
                         2 => "Hiba a frissítések keresése közben - helytelen a hash",
                         3 => "Fel vid sökandet efter uppdateringar - ogiltig hash",
                         _ => "Error while checking updates - returned invalid hash",
@@ -1182,7 +1183,7 @@ pub mod instance {
                 }
                 pub fn label(short: bool) -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => if short { "Aktualisierungs Prüfung" } else { "Nach Aktualisieren suchen" },
+                        1 => if short { "Updateprüfung" } else { "Nach Updates suchen" },
                         2 => if short { "Frissítés keresése" } else { "Frissítések keresése" },
                         3 => if short { "Uppdateringskontroll" } else { "Kolla efter uppdateringar" },
                         _ => if short { "Update Check" } else { "Check for updates" },
@@ -1198,7 +1199,7 @@ pub mod instance {
                 }
                 pub fn title() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Suche nach Aktualisierungen",
+                        1 => "Suche nach Updates",
                         2 => "Frissítések keresése",
                         3 => "Kollar efter uppdateringar",
                         _ => "Checking for updates",
@@ -1225,7 +1226,7 @@ pub mod instance {
                 }
                 pub fn error() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Fehler beim herunterladen von der Aktuallisierung",
+                        1 => "Fehler beim Herunterladen des Updates",
                         2 => "Hiba a frissítés letöltése közben",
                         3 => "Fel vid nedladdning av uppdatering",
                         _ => "Error downloading update",
@@ -1233,7 +1234,7 @@ pub mod instance {
                 }
                 pub fn from_curseforge() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Lade Aktuallisierung von Curseforge herunter",
+                        1 => "Lade Update von CurseForge herunter",
                         2 => "Frissítés letöltése a Curseforgeról",
                         3 => "Ladda ned uppdatering från Curseforge",
                         _ => "Download update from Curseforge",
@@ -1241,7 +1242,7 @@ pub mod instance {
                 }
                 pub fn from_modrinth() -> &'static str {
                     match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                        1 => "Lade Aktuallisierung von Modrinth herunter",
+                        1 => "Lade Update von Modrinth herunter",
                         2 => "Frissítés letöltése a Modrinthről",
                         3 => "Ladda ned uppdatering från Modrinth",
                         _ => "Download update from Modrinth",
@@ -1295,7 +1296,7 @@ pub mod instance {
             }
             pub fn mod_() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Mod Version",
+                    1 => "Mod-Version",
                     2 => "Mod verzió",
                     3 => "Mod-version",
                     _ => "Mod Version",
@@ -1303,7 +1304,7 @@ pub mod instance {
             }
             pub fn modpack() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Modpaket Version",
+                    1 => "Modpaket-Version",
                     2 => "Modcsomag verzió",
                     3 => "Modpacks-Version",
                     _ => "Modpack Version",
@@ -1311,7 +1312,7 @@ pub mod instance {
             }
             pub fn resourcepack() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Paket Version",
+                    1 => "Paketversion",
                     2 => "Csomag verzió",
                     3 => "Paket-version",
                     _ => "Pack Version",
@@ -1319,7 +1320,7 @@ pub mod instance {
             }
             pub fn shader() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Shader Version",
+                    1 => "Shaderversion",
                     2 => "Shader verzió",
                     3 => "Shader-Version",
                     _ => "Shader Version",
@@ -1329,7 +1330,7 @@ pub mod instance {
     }
     pub fn create() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Erstelle Instanz",
+            1 => "Instanz erstellen",
             2 => "Példány létrehozása",
             3 => "Skapa Instans",
             _ => "Create Instance",
@@ -1353,7 +1354,7 @@ pub mod instance {
     }
     pub fn delete() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Lösche diese Instanz",
+            1 => "Instanz löschen",
             2 => "Ez a példány törlése",
             3 => "Radera den här instansen",
             _ => "Delete this instance",
@@ -1378,7 +1379,7 @@ pub mod instance {
         }
         pub fn confirm_text(name: &str) -> String {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => format!("Um zu bestätigen gebe „{name}“ ein"),
+                1 => format!("Gebe „{name}“ ein, um zu Bestätigen"),
                 2 => format!("A megerősítéshez írd be, hogy '{name}' az alábbi mezőbe"),
                 3 => format!("Föra att konfirmera, skriv '{name}' i lådan under"),
                 _ => format!("To confirm, type '{name}' in the box below"),
@@ -1402,7 +1403,7 @@ pub mod instance {
         }
         pub fn warning(name: &str) -> String {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => format!("Dadurch will die Instanz „{name}“ sowie die zugehörigen Spielstände, Ressourcenpakete, Mods, Konfigurationsdateien und weitere Elemente endgültig gelöscht. Diese Dateien können nicht wiederhergestellt werden."),
+                1 => format!("Dadurch wird die Instanz „{name}“ sowie die zugehörigen Spielstände, Ressourcenpakete, Mods, Konfigurationsdateien und weitere Elemente endgültig gelöscht. Diese Dateien können nicht wiederhergestellt werden."),
                 2 => format!("Ez örökre törölni fogja a(z) '{name}' példányt és a hozzá tartozó mentéseket, forráscsomagokat, konfigurációs fájlokat és másokat. Ezek a fájlok nem lesznek visszaszerezhetőek"),
                 3 => format!("Detta kommer att permanent radera instansen med namn: '{name}' och tillhörande sparade världar, resurspaket, mods, konfigurationsfiler och mer. Dessa filer kommer inte att kunna återställas"),
                 _ => format!("This will permanently delete the '{name}' instance and associated saves, resourcepacks, mods, configuration files, and more. These files will not be recoverable"),
@@ -1437,6 +1438,7 @@ pub mod instance {
         }
         pub fn action() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Exportieren",
                 2 => "Export",
                 3 => "Exportera",
                 _ => "Export",
@@ -1444,6 +1446,7 @@ pub mod instance {
         }
         pub fn author() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Autor",
                 2 => "Szerző",
                 3 => "Författare",
                 _ => "Author",
@@ -1451,6 +1454,7 @@ pub mod instance {
         }
         pub fn curseforge_options() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "CurseForge-Optionen",
                 2 => "CurseForge beállítások",
                 3 => "CurseForge inställningar",
                 _ => "CurseForge Options",
@@ -1458,6 +1462,7 @@ pub mod instance {
         }
         pub fn error() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Fehler beim Exportieren",
                 2 => "Hiba a példány exportálása közben",
                 3 => "Fel vid export av instans",
                 _ => "Error exporting instance",
@@ -1476,6 +1481,7 @@ pub mod instance {
             }
             pub fn curseforge() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                    1 => "CurseForge Pack (.zip)",
                     2 => "CurseForge Pack (.zip)",
                     3 => "CurseForge Pack (.zip)",
                     _ => "CurseForge Pack (.zip)",
@@ -1483,6 +1489,7 @@ pub mod instance {
             }
             pub fn label() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                    1 => "Format",
                     2 => "Formátum",
                     3 => "Format",
                     _ => "Format",
@@ -1490,6 +1497,7 @@ pub mod instance {
             }
             pub fn modrinth() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                    1 => "Modrinth Pack (.mrpack)",
                     2 => "Modrinth Pack (.mrpack)",
                     3 => "Modrinth Pack (.mrpack)",
                     _ => "Modrinth Pack (.mrpack)",
@@ -1497,6 +1505,7 @@ pub mod instance {
             }
             pub fn zip() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                    1 => "Instanz-Zip",
                     2 => "Példány Zip",
                     3 => "Instans Zip-fil",
                     _ => "Instance Zip",
@@ -1505,6 +1514,7 @@ pub mod instance {
         }
         pub fn include_cache() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Cache-Dateien einbeziehen",
                 2 => "Gyorsítótár fájlok belefoglalása",
                 3 => "Inkludera Cache filer",
                 _ => "Include cache files",
@@ -1512,6 +1522,7 @@ pub mod instance {
         }
         pub fn include_configs() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Konfigurationsdateien (configs) einbeziehen",
                 2 => "Konfigurációk belefoglalása",
                 3 => "Inkludera konfigurationsfiler",
                 _ => "Include configs",
@@ -1519,6 +1530,7 @@ pub mod instance {
         }
         pub fn include_logs() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "logs/Absturzberichte einbeziehen",
                 2 => "Naplófájlok/összeomlási jelentések belefoglalása",
                 3 => "Inkludera loggar/krashrapporteringar",
                 _ => "Include logs/crash reports",
@@ -1526,6 +1538,7 @@ pub mod instance {
         }
         pub fn include_mods() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Mods (mods) einbeziehen",
                 2 => "Modok belefoglalása",
                 3 => "Inkludera mods",
                 _ => "Include mods",
@@ -1533,6 +1546,7 @@ pub mod instance {
         }
         pub fn include_resourcepacks() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Ressourcenpakete (resourcepacks) einbeziehen",
                 2 => "forráscsomagok belefoglalása",
                 3 => "Inkludera resurspacket",
                 _ => "Include resourcepacks",
@@ -1540,6 +1554,7 @@ pub mod instance {
         }
         pub fn include_saves() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Welten (saves) einbeziehen",
                 2 => "Mentések belefoglalása",
                 3 => "Inkludera världar",
                 _ => "Include saves",
@@ -1547,6 +1562,7 @@ pub mod instance {
         }
         pub fn include_synced() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Synchronisierte Verzeichnisse einbeziehen",
                 2 => "Szinkronizált mappák belefoglalása",
                 3 => "Inkludera synkade foldrar",
                 _ => "Include synced folders",
@@ -1554,6 +1570,7 @@ pub mod instance {
         }
         pub fn modrinth_options() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Modrinth-Optionen",
                 2 => "Modrinth beállítások",
                 3 => "Modrinth inställningar",
                 _ => "Modrinth Options",
@@ -1561,6 +1578,7 @@ pub mod instance {
         }
         pub fn name() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Name",
                 2 => "Név",
                 3 => "Namn",
                 _ => "Name",
@@ -1568,6 +1586,7 @@ pub mod instance {
         }
         pub fn options() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Exportoptionen",
                 2 => "Export beállítások",
                 3 => "Exportera alternativ",
                 _ => "Export Options",
@@ -1575,6 +1594,7 @@ pub mod instance {
         }
         pub fn progress() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Instanz wird exportiert",
                 2 => "Példány exportálása",
                 3 => "Exporterar instansen",
                 _ => "Exporting instance",
@@ -1582,6 +1602,7 @@ pub mod instance {
         }
         pub fn recommended_ram() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Empfohlener RAM",
                 2 => "Ajánlott RAM",
                 3 => "Rekommenderat RAM-minne",
                 _ => "Recommended RAM",
@@ -1589,6 +1610,7 @@ pub mod instance {
         }
         pub fn summary() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Zusammenfassung",
                 2 => "Összegzés",
                 3 => "Sammanfattning",
                 _ => "Summary",
@@ -1596,6 +1618,7 @@ pub mod instance {
         }
         pub fn title() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Instanz exportieren",
                 2 => "Példány exportálása",
                 3 => "Exportera instansen",
                 _ => "Export Instance",
@@ -1603,6 +1626,7 @@ pub mod instance {
         }
         pub fn version() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Version",
                 2 => "Verzió",
                 3 => "version",
                 _ => "Version",
@@ -1619,7 +1643,7 @@ pub mod instance {
     }
     pub fn glfw_lib() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Verwende System GLFW",
+            1 => "System GLFW verwenden",
             2 => "Rendszer GLFW használata",
             3 => "Välj systemets GLFW",
             _ => "Use System GLFW",
@@ -1627,7 +1651,7 @@ pub mod instance {
     }
     pub fn incompatible(num: usize) -> String {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => format!("({num} instanzen waren inkompatiebel)"),
+            1 => format!("({num} Instanzen waren inkompatibel)"),
             2 => format!("({num} példány nem kompatibilis"),
             3 => format!("({num} instanserna var okompatibla"),
             _ => format!("({num} instances were incompatible)"),
@@ -1643,7 +1667,7 @@ pub mod instance {
     }
     pub fn invalid_name() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Invalieder Name",
+            1 => "Invalider Name",
             2 => "Érvénytelen név",
             3 => "Ogiltigt namn",
             _ => "Invalid name",
@@ -1651,7 +1675,7 @@ pub mod instance {
     }
     pub fn jvm_binary() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Überschreibe JVM Binary",
+            1 => "JVM Binary überschreiben",
             2 => "JVM Binary felülírása",
             3 => "Överskrid JVM programfil",
             _ => "Override JVM Binary",
@@ -1659,7 +1683,7 @@ pub mod instance {
     }
     pub fn jvm_flags() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Fügen JVM Argumente hinzu",
+            1 => "JVM-Argumente hinzufügen",
             2 => "JVM argumentumok hozzáadása",
             3 => "Lägg till JVM-argument",
             _ => "Add JVM Flags",
@@ -1675,7 +1699,7 @@ pub mod instance {
     }
     pub fn kill_instance() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Stope Instanz",
+            1 => "Instanz beenden",
             2 => "Példány leállítása",
             3 => "Stoppa instansen",
             _ => "Kill Instance",
@@ -1727,7 +1751,7 @@ pub mod instance {
         }
         pub fn use_gamemode() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Nutze GameMode",
+                1 => "GameMode nutzen",
                 2 => "GameMode használata",
                 3 => "Använd GameMode",
                 _ => "Use GameMode",
@@ -1735,7 +1759,7 @@ pub mod instance {
         }
         pub fn use_mangohud() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Nutze MangoHud",
+                1 => "MangoHud nutzen",
                 2 => "MangoHud használata",
                 3 => "Använd MangoHud",
                 _ => "Use MangoHud",
@@ -1773,7 +1797,7 @@ pub mod instance {
         pub mod cleanup {
             pub fn bytes(num: usize) -> String {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => format!("Räume alte Protokolle auf ({num} bytes)"),
+                    1 => format!("Räume alte Logdateien auf ({num} bytes)"),
                     2 => format!("Régi naplófájlok tisztítása ({num} byte)"),
                     3 => format!("Städa upp gamla logg-filer ({num} bytes)"),
                     _ => format!("Cleanup old log files ({num} bytes)"),
@@ -1781,7 +1805,7 @@ pub mod instance {
             }
             pub fn gb(num: usize) -> String {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => format!("Räume alte Protokolle auf ({num}GB)"),
+                    1 => format!("Räume alte Logdateien auf ({num}GB)"),
                     2 => format!("Régi naplófájlok tisztítása ({num}GB)"),
                     3 => format!("Städa upp gamla logg-filer ({num}GB)"),
                     _ => format!("Cleanup old log files ({num}GB)"),
@@ -1789,7 +1813,7 @@ pub mod instance {
             }
             pub fn kb(num: usize) -> String {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => format!("Räume alte Protokolle auf ({num}kB)"),
+                    1 => format!("Räume alte Logdateien auf ({num}kB)"),
                     2 => format!("Régi naplófájlok tisztítása ({num}kB)"),
                     3 => format!("Städa upp gamla logg-filer ({num}kB)"),
                     _ => format!("Cleanup old log files ({num}kB)"),
@@ -1797,7 +1821,7 @@ pub mod instance {
             }
             pub fn mb(num: usize) -> String {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => format!("Räume alte Protokolle auf ({num}MB)"),
+                    1 => format!("Räume alte Logdateien auf ({num}MB)"),
                     2 => format!("Régi naplófájlok tisztítása ({num}MB)"),
                     3 => format!("Städa upp gamla logg-filer ({num}MB)"),
                     _ => format!("Cleanup old log files ({num}MB)"),
@@ -1806,7 +1830,7 @@ pub mod instance {
         }
         pub fn loading() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Lade verfügbare Protokolle...",
+                1 => "Lade verfügbare Logdateien...",
                 2 => "Elérhető naplófájlok betöltése...",
                 3 => "Laddar tillgängliga loggar...",
                 _ => "Loading available logs...",
@@ -1814,7 +1838,7 @@ pub mod instance {
         }
         pub fn none() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Keine verfügbare Protokolle",
+                1 => "Keine verfügbaren Logdateien",
                 2 => "Nincs elérhető naplófájl",
                 3 => "Inga tillgängliga loggar",
                 _ => "No available logs",
@@ -1822,7 +1846,7 @@ pub mod instance {
         }
         pub fn select_file() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Wähle Protokolle aus",
+                1 => "Wähle Logdateien aus",
                 2 => "Válassz naplófájlt",
                 3 => "Välj log-fil",
                 _ => "Select log file",
@@ -1830,7 +1854,7 @@ pub mod instance {
         }
         pub fn title() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Protokolle",
+                1 => "Logdateien",
                 2 => "Naplók",
                 3 => "Loggar",
                 _ => "Logs",
@@ -1848,7 +1872,7 @@ pub mod instance {
             }
             pub fn error() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Fehler beim Hochladen von Protokollen",
+                    1 => "Fehler beim Hochladen von Logdateien",
                     2 => "Hiba a naplófájl feltöltésekor",
                     3 => "Fel vid uppladdninga var loggar",
                     _ => "Error uploading log file",
@@ -1864,7 +1888,7 @@ pub mod instance {
             }
             pub fn title() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Lade Protokolle",
+                    1 => "Lade Logdateien",
                     2 => "Naplófájl feltöltése",
                     3 => "Ladda upp log-fil",
                     _ => "Uploading log file",
@@ -1874,7 +1898,7 @@ pub mod instance {
     }
     pub fn mc_version() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Minecraft Version",
+            1 => "Minecraft-Version",
             2 => "Minecraft verzió",
             3 => "Minecraft Version",
             _ => "Minecraft Version",
@@ -1882,7 +1906,7 @@ pub mod instance {
     }
     pub fn memory() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Arbeitsspeicher",
+            1 => "Arbeitsspeicher einstellen",
             2 => "Memória beállítása",
             3 => "RAM-minne",
             _ => "Set Memory",
@@ -1938,7 +1962,7 @@ pub mod instance {
     }
     pub fn openal_lib() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Verwende System OpenAL",
+            1 => "System OpenAL verwenden",
             2 => "Rendszer OpenAL használata",
             3 => "Använd Systemets OpenAL (Ljud programvaru-bibliotek)",
             _ => "Use System OpenAL",
@@ -1962,7 +1986,7 @@ pub mod instance {
     }
     pub fn recent() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Letze Instanzen",
+            1 => "Letzte Instanzen",
             2 => "Legutóbbi példányok",
             3 => "Senaste instanserna",
             _ => "Recent Instances",
@@ -1987,7 +2011,7 @@ pub mod instance {
         }
         pub fn sandbox() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Isolierung",
+                1 => "Sandbox / isolierte Umgebung",
                 2 => "Izolálás",
                 3 => "Sandlådeisolering",
                 _ => "Sandbox",
@@ -1996,7 +2020,7 @@ pub mod instance {
     }
     pub fn select_glfw_lib() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Wähle GLFW Bibiliothek aus",
+            1 => "GLFW Bibiliothek auswählen",
             2 => "GLFW könyvtár kiválasztása",
             3 => "Välj GLFW bibliotek",
             _ => "Select GLFW Library",
@@ -2012,7 +2036,7 @@ pub mod instance {
     }
     pub fn select_jvm_binary() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Wähle JVM Binary aus",
+            1 => "JVM Binary auswählen",
             2 => "JVM Binary választása",
             3 => "Välj JVM programfil",
             _ => "Select JVM Binary",
@@ -2020,7 +2044,7 @@ pub mod instance {
     }
     pub fn select_openal_lib() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Wähle OpenAL Bibiliothek aus",
+            1 => "OpenAL Bibiliothek auswählen",
             2 => "OpenAL könyvtár választása",
             3 => "Välj OpenAL Bibliotek",
             _ => "Select OpenAL Library",
@@ -2028,7 +2052,7 @@ pub mod instance {
     }
     pub fn select_png_icon() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "PNG Bild auswählen",
+            1 => "PNG-Bild auswählen",
             2 => "Válassz egy PNG ikont",
             3 => "Välj PNG ikon",
             _ => "Select PNG Icon",
@@ -2079,7 +2103,7 @@ pub mod instance {
         }
         pub fn starting() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Startet...",
+                1 => "Starten...",
                 2 => "Indítás...",
                 3 => "Startar...",
                 _ => "Launching...",
@@ -2122,7 +2146,7 @@ pub mod instance {
         }
         pub fn already_exists(num: usize, name: &str) -> String {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => format!("{num} Instanzen enthalten einen „{name}“ Ordner. Bitte erstelle eine sicherheits Kopie und lösche den Ordner um zu synchronisieren"),
+                1 => format!("{num} Instanzen enthalten einen „{name}“ Ordner. Bitte erstelle eine Sicherheitskopie und lösche den Ordner, um zu synchronisieren"),
                 2 => format!("{num} példány már tartalmazza a(z) '{name}' mappát. Kérlek csinálj biztonsági mentést a mappákról, majd töröld őket, hogy bekapcsolhasd a szinkronizálást"),
                 3 => format!("{num} instans(er) innehåller redan en '{name}' mapp. Säkerhetskopiera och ta bort mapparna på ett säkert sätt för att aktivera synkronisering"),
                 _ => format!("{num} instance(s) already contain a '{name}' folder. Please safely backup and remove the folders to enable syncing"),
@@ -2146,7 +2170,7 @@ pub mod instance {
         }
         pub fn disable_syncing() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Deaktiviere Datensynchronisierung",
+                1 => "Deaktiviere Instanzdatensynchronisierung",
                 2 => "Példány fájlok szinkronizálásának kikapcsolása",
                 3 => "Stäng av instans fil synkning",
                 _ => "Disable Instance File Syncing",
@@ -2257,7 +2281,7 @@ pub mod instance {
             }
             pub fn bobby() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Bobby Ordner (.bobby)",
+                    1 => "Synchronisiere Bobby (.bobby) Ordner",
                     2 => "Bobby (.bobby) mappájának szinkronizálása",
                     3 => "Synka Bobby (.bobby) folder",
                     _ => "Sync Bobby (.bobby) folder",
@@ -2273,7 +2297,7 @@ pub mod instance {
             }
             pub fn config() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Konfigurationsordner",
+                    1 => "Synchronisiere Konfigurationsdatei (config)-Ordner",
                     2 => "Konfigurációs mappa szinkronizálása",
                     3 => "Synka konfig folder",
                     _ => "Sync config folder",
@@ -2289,7 +2313,7 @@ pub mod instance {
             }
             pub fn flashback() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Flashback Ordner (flashback)",
+                    1 => "Synchronisiere Flashback (flashback) Ordner",
                     2 => "Flashback (flashback) mappájának szinkronizálása",
                     3 => "Synka Flashback (flashback) folder",
                     _ => "Sync Flashback (flashback) folder",
@@ -2305,7 +2329,7 @@ pub mod instance {
             }
             pub fn journeymap() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Journeymap Ordner (journeymap)",
+                    1 => "Synchronisiere Journeymap (journeymap) Ordner",
                     2 => "Journeymap (journeymap) mappájának szinkronizálása",
                     3 => "Synka Journeymap (journeymap) folder",
                     _ => "Sync Journeymap (journeymap) folder",
@@ -2313,7 +2337,7 @@ pub mod instance {
             }
             pub fn litematic() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Litematic Ordner (schematic)",
+                    1 => "Synchronisiere Litematic (schematic) Ordner",
                     2 => "Litematic (schematic) mappájának szinkronizálása",
                     3 => "Synka Litematic (schematic) folder",
                     _ => "Sync Litematic (schematic) folder",
@@ -2329,7 +2353,7 @@ pub mod instance {
             }
             pub fn resourcepacks() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Ressourcenpakete",
+                    1 => "Synchronisiere Ressourcenpakete (resourcepacks)",
                     2 => "Forráscsomagok mappájának szinkronizálása",
                     3 => "Synka resurspakets folder",
                     _ => "Sync resourcepacks folder",
@@ -2337,7 +2361,7 @@ pub mod instance {
             }
             pub fn saves() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Welten Ordner",
+                    1 => "Synchronisiere saves Ordner (Welten)",
                     2 => "Világok mappájának szinkronizálása",
                     3 => "Synka värld-folder",
                     _ => "Sync saves folder",
@@ -2345,7 +2369,7 @@ pub mod instance {
             }
             pub fn screenshots() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Bildschirmaufnahmen",
+                    1 => "Synchronisiere Bildschirmaufnahmen (screenshots)",
                     2 => "Képernyőképek mappájának szinkronizálása",
                     3 => "Synka skärmsklipps folder",
                     _ => "Sync screenshots folder",
@@ -2361,7 +2385,7 @@ pub mod instance {
             }
             pub fn shaderpacks() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Shaderpakete",
+                    1 => "Synchronisiere Shaderpakete (shaderpacks)",
                     2 => "Shadercsomagok mappájának szinkronizálása",
                     3 => "Synka shaderpakets folder",
                     _ => "Sync shaderpacks folder",
@@ -2377,7 +2401,7 @@ pub mod instance {
             }
             pub fn xaero() -> &'static str {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => "Synchronisiere Xaero's Minimap Ordner (xaero)",
+                    1 => "Synchronisiere Xaero's Minimap (xaero) Ordner",
                     2 => "Xaero's Minimap (xaero) mappájának szinkronizálása",
                     3 => "Synka Xaero's Minimap (xaero) folder",
                     _ => "Sync Xaero's Minimap (xaero) folder",
@@ -2410,7 +2434,7 @@ pub mod instance {
     }
     pub fn total_playtime() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Insgesammte Spielzeit",
+            1 => "Insgesamte Spielzeit",
             2 => "Össz játékidő",
             3 => "Total speltid",
             _ => "Total Playtime",
@@ -2461,7 +2485,7 @@ pub mod instance {
         }
         pub fn error() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Fehler beim laden von Minecraft Versionen",
+                1 => "Fehler beim Laden von Minecraft-Versionen",
                 2 => "Hiba a Minecraft verziók betöltésekor",
                 3 => "Ett vid laddning av Minecraft versioner",
                 _ => "Error loading Minecraft versions",
@@ -2469,7 +2493,7 @@ pub mod instance {
         }
         pub fn game_versions() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Lade Minecraft Versionen...",
+                1 => "Lade Minecraft-Versionen...",
                 2 => "Minecraft verziók betöltése...",
                 3 => "Laddar Minecraft Versioner...",
                 _ => "Loading Minecraft Versions...",
@@ -2485,7 +2509,7 @@ pub mod instance {
         }
         pub fn reload() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Versionen neuladen",
+                1 => "Versionen neu laden",
                 2 => "Verziók újratöltése",
                 3 => "Ladda om Versioner",
                 _ => "Reload Versions",
@@ -2510,7 +2534,7 @@ pub mod instance {
     }
     pub fn wrapper_command() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Füge Wrapper Befehl hinzu",
+            1 => "Füge Wrapper-Befehl hinzu",
             2 => "Wrapper parancs hozzáadása",
             3 => "Lägg till ett wrapper-kommand",
             _ => "Add Wrapper Command",
@@ -2528,7 +2552,7 @@ pub mod login {
     }
     pub fn error() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Fehler beim einloggen",
+            1 => "Fehler beim Einloggen",
             2 => "Hiba történt bejelentkezés közben",
             3 => "Fel vid inloggningen",
             _ => "Error while logging in",
@@ -2709,7 +2733,7 @@ pub mod modrinth {
         }
         pub fn _8x_minus() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "8x oder weniger",
+                1 => "8x oder niedriger",
                 2 => "8x vagy kisebb",
                 3 => "8x eller lägre",
                 _ => "8x or lower",
@@ -2725,7 +2749,7 @@ pub mod modrinth {
         }
         pub fn atmosphere() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Atmosphere",
+                1 => "Atmosphäre",
                 2 => "Atmoszféra",
                 3 => "atmosfär",
                 _ => "Atmosphere",
@@ -2829,7 +2853,7 @@ pub mod modrinth {
         }
         pub fn core_minusshaders() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Core-Shaders",
+                1 => "Core-Shader",
                 2 => "Alap shaderek",
                 3 => "Core-shaders",
                 _ => "Core Shaders",
@@ -2901,7 +2925,7 @@ pub mod modrinth {
         }
         pub fn fantasy() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Fantasie",
+                1 => "Fantasy",
                 2 => "Fantázia",
                 3 => "Fantasi",
                 _ => "Fantasy",
@@ -3005,7 +3029,7 @@ pub mod modrinth {
         }
         pub fn kitchen_minussink() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Etwas von allem",
+                1 => "Von allem etwas",
                 2 => "Mindenből egy kicsi",
                 3 => "Allt möjligt",
                 _ => "Kitchen sink",
@@ -3053,7 +3077,7 @@ pub mod modrinth {
         }
         pub fn low() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Niedrig",
+                1 => "Gering",
                 2 => "Alacsony",
                 3 => "Låg",
                 _ => "Low",
@@ -3212,7 +3236,7 @@ pub mod modrinth {
         }
         pub fn quests() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Aufgaben",
+                1 => "Herausforderungen",
                 2 => "Küldetések",
                 3 => "Uppdrag",
                 _ => "Quests",
@@ -3332,7 +3356,7 @@ pub mod modrinth {
         }
         pub fn transportation() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Transportation",
+                1 => "Transport",
                 2 => "Szállítás",
                 3 => "Transportation",
                 _ => "Transportation",
@@ -3348,7 +3372,7 @@ pub mod modrinth {
         }
         pub fn utility() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Nützlich",
+                1 => "Werkzeug",
                 2 => "Hasznos",
                 3 => "Vertyg",
                 _ => "Utility",
@@ -3427,7 +3451,7 @@ pub mod modrinth {
         }
         pub fn client_only_server_optional() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Client (Server Optional)",
+                1 => "Client (Server optional)",
                 2 => "Kliens (Szerver opcionális)",
                 3 => "Klient (falfri Server)",
                 _ => "Client (server optional)",
@@ -3451,7 +3475,7 @@ pub mod modrinth {
         }
         pub fn server_only_client_optional() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Server (Client Optional)",
+                1 => "Server (Client optional)",
                 2 => "Szerver (kliens opcionális)",
                 3 => "Server (falfri Klient)",
                 _ => "Server (client optional)",
@@ -3504,7 +3528,7 @@ pub mod modrinth {
         }
         pub fn newest() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Neuste",
+                1 => "Neueste",
                 2 => "Legújabb",
                 3 => "Nyast",
                 _ => "Newest",
@@ -3621,7 +3645,7 @@ pub mod settings {
         }
         pub fn hide_server_addresses() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Verstecke Server Adresse",
+                1 => "Verstecke Serveradresse",
                 2 => "Szerverek címének elrejtése",
                 3 => "Göm server addresser",
                 _ => "Hide server addresses",
@@ -3727,7 +3751,7 @@ pub mod settings {
         }
         pub fn title() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Proxy Einstellung",
+                1 => "Proxy-Einstellungen",
                 2 => "Proxy beállítások",
                 3 => "Proxy inställningar",
                 _ => "Proxy Settings",
@@ -3807,7 +3831,7 @@ pub mod settings {
         }
         pub fn close_all_when_main_closed() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Schließe alle anderen Fenster when das Hauptfenster geschlossen ist",
+                1 => "Schließe alle anderen Fenster wenn das Hauptfenster geschlossen ist",
                 2 => "Minden másik ablak bezárása a fő ablak bezárásakor",
                 3 => "Stäng alla andra fönster när huvudfönstret stängs",
                 _ => "Close all other windows when main window closed",
@@ -3823,7 +3847,7 @@ pub mod settings {
         }
         pub fn open_game_output() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Öffne Spiel Ausgabe beim Start",
+                1 => "Öffne Spielausgabe beim Start",
                 2 => "Játéknapló megnyitása a játék indításakor",
                 3 => "Öppna spelutdata vid spelstart",
                 _ => "Open game output on launch",
@@ -3839,6 +3863,7 @@ pub mod settings {
         }
         pub fn use_os_titlebar() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Nutze Betriebssystem-Titelleiste (Neustart benötigt)",
                 2 => "Oprendszer címsáv használata (újraindítás szükséges)",
                 3 => "Använd operativsystemets titlebar (kräver omstart)",
                 _ => "Use OS titlebar (requires restart)",
@@ -3865,7 +3890,7 @@ pub mod skins {
     }
     pub fn add_from_file() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Füge von Datei hinzu",
+            1 => "Füge aus Datei hinzu",
             2 => "Hozzáadás fájlból",
             3 => "Lägg till från fil",
             _ => "Add from file",
@@ -3888,7 +3913,7 @@ pub mod skins {
     }
     pub fn copy() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Kopiern",
+            1 => "Kopieren",
             2 => "Másolás",
             3 => "Kopiera",
             _ => "Copy",
@@ -3920,7 +3945,7 @@ pub mod skins {
     }
     pub fn login_to_view_edit(username: &str) -> String {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => format!("Einloggen um {username}s Skin anzusehen/bearbeiten"),
+            1 => format!("Einloggen, um {username}s Skin anzusehen/bearbeiten"),
             2 => format!("Jelentkezz be, hogy megnézd/szerkeszd {username} kinézeteit"),
             3 => format!("Logga-in för att visa/redigera {username}s skin"),
             _ => format!("Login to view/edit {username}'s skin"),
@@ -3928,7 +3953,7 @@ pub mod skins {
     }
     pub fn no_offline() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Skins können nicht auf Offline Konte angewant werden",
+            1 => "Skins können nicht auf Offline-Konten angewant werden",
             2 => "Nem alkalmazhatóak kinézetek offline fiókokra",
             3 => "Skins kan inte tillämpas på offline-konton",
             _ => "Skins cannot be applied to offline accounts",
@@ -3944,7 +3969,7 @@ pub mod skins {
     }
     pub fn select_skin() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Wähle ein Skin aus",
+            1 => "Wähle einen Skin aus",
             2 => "Válassz egy kinézetet",
             3 => "Välj ett skinn",
             _ => "Select Skin",
@@ -3961,7 +3986,7 @@ pub mod skins {
         }
         pub fn model() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Wechsle zu Model",
+                1 => "Wechsle zu Modell",
                 2 => "Váltás a modellre",
                 3 => "Byt till model",
                 _ => "Switch to model",
@@ -3969,7 +3994,7 @@ pub mod skins {
         }
         pub fn texture() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Wechle zu Textur",
+                1 => "Wechsle zu Textur",
                 2 => "Váltás a textúrára",
                 3 => "Byt till textur",
                 _ => "Switch to texture",
@@ -4013,7 +4038,7 @@ pub mod system {
     }
     pub fn game_output() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Minecraft Log Ausgabe",
+            1 => "Minecraft-Spielausgabe",
             2 => "Minecraft játéknapló",
             3 => "Minecraft Log utmatning",
             _ => "Minecraft Game Output",
@@ -4021,7 +4046,7 @@ pub mod system {
     }
     pub fn metadata_error() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Falscher Metadaten Type! Pandora Fehler!",
+            1 => "Falscher Metadaten-Typ! Pandora Fehler!",
             2 => "Hibás metaadat típus! Pandora hiba!",
             3 => "Fel medatata typ! En bug hos oss (Pandora)",
             _ => "Wrong metadata type! Pandora bug!",
@@ -4047,7 +4072,7 @@ pub mod system {
         }
         pub fn install_error() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Aktualisierung konnte nicht installiert werden",
+                1 => "Update konnte nicht installiert werden",
                 2 => "Nem sikerült a frissítés telepítése",
                 3 => "Kunde ej installera uppdateringen",
                 _ => "Unable to install update",
@@ -4073,7 +4098,7 @@ pub mod system {
         pub mod size {
             pub fn bytes(num: usize) -> String {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => format!("Größe der Aktualisierung: {num} bytes"),
+                    1 => format!("Updategröße: {num} bytes"),
                     2 => format!("Frissítés mérete: {num} byte"),
                     3 => format!("Updateringsstorlek: {num} byte"),
                     _ => format!("Update size: {num} bytes"),
@@ -4081,7 +4106,7 @@ pub mod system {
             }
             pub fn gb(num: usize) -> String {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => format!("Größe der Aktualisierung: {num}GB"),
+                    1 => format!("Updategröße: {num}GB"),
                     2 => format!("Frissítés mérete: {num}GB"),
                     3 => format!("Updateringsstorlek: {num}GB"),
                     _ => format!("Update size: {num}GB"),
@@ -4089,7 +4114,7 @@ pub mod system {
             }
             pub fn kb(num: usize) -> String {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => format!("Größe der Aktualisierung: {num}kB"),
+                    1 => format!("Updategröße: {num}kB"),
                     2 => format!("Frissítés mérete: {num}kB"),
                     3 => format!("Updateringsstorlek: {num}kB"),
                     _ => format!("Update size: {num}kB"),
@@ -4097,7 +4122,7 @@ pub mod system {
             }
             pub fn mb(num: usize) -> String {
                 match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                    1 => format!("Größe der Aktualisierung: {num}MB"),
+                    1 => format!("Updategröße: {num}MB"),
                     2 => format!("Frissítés mérete: {num}MB"),
                     3 => format!("Updateringsstorlek: {num}MB"),
                     _ => format!("Update size: {num}MB"),
