@@ -246,64 +246,22 @@ impl Render for Accounts {
                         .child(ShrinkingText::new(account_name.clone())),
                 )
                 .child(
-                    h_flex()
-                        .gap_1()
+                    Button::new(("account-delete", account_index))
                         .invisible()
                         .group_hover(group_name.clone(), |style| style.visible())
-                        .child(Button::new(("account-up", account_index))
-                            .ghost()
-                            .compact()
-                            .h_8()
-                            .w_8()
-                            .icon(PandoraIcon::ArrowUp)
-                            .disabled(account_index == 0)
-                            .on_click({
-                                let backend_handle = self.backend_handle.clone();
-                                move |_, _, cx| {
-                                    cx.stop_propagation();
-                                    if account_index == 0 {
-                                        return;
-                                    }
-                                    backend_handle.send(MessageToBackend::ReorderAccounts {
-                                        from_index: account_index,
-                                        delta: -1,
-                                    });
-                                }
-                            }))
-                        .child(Button::new(("account-down", account_index))
-                            .ghost()
-                            .compact()
-                            .h_8()
-                            .w_8()
-                            .icon(PandoraIcon::ArrowDown)
-                            .disabled(account_index + 1 >= accounts_len)
-                            .on_click({
-                                let backend_handle = self.backend_handle.clone();
-                                move |_, _, cx| {
-                                    cx.stop_propagation();
-                                    if account_index + 1 >= accounts_len {
-                                        return;
-                                    }
-                                    backend_handle.send(MessageToBackend::ReorderAccounts {
-                                        from_index: account_index,
-                                        delta: 1,
-                                    });
-                                }
-                            }))
-                        .child(Button::new(("account-delete", account_index))
-                            .ghost()
-                            .compact()
-                            .icon(PandoraIcon::Trash2)
-                            .h_8()
-                            .w_8()
-                            .danger()
-                            .on_click({
-                                let backend_handle = self.backend_handle.clone();
-                                move |_, _, cx| {
-                                    cx.stop_propagation();
-                                    backend_handle.send(MessageToBackend::DeleteAccount { uuid });
-                                }
-                            })),
+                        .ghost()
+                        .compact()
+                        .icon(PandoraIcon::Trash2)
+                        .h_8()
+                        .w_8()
+                        .danger()
+                        .on_click({
+                            let backend_handle = self.backend_handle.clone();
+                            move |_, _, cx| {
+                                cx.stop_propagation();
+                                backend_handle.send(MessageToBackend::DeleteAccount { uuid });
+                            }
+                        })
                 ).into_any_element())
         });
 
