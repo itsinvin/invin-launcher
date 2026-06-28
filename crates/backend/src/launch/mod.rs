@@ -429,7 +429,8 @@ impl Launcher {
                     "net/minecraftforge/forge/{0}/forge-{0}-installer.jar",
                     "https://maven.minecraftforge.net/net/minecraftforge/forge/{0}/forge-{0}-installer.jar",
                     true,
-                    false
+                    false,
+                    Loader::Forge,
                 ).await
             },
             Loader::NeoForge => {
@@ -449,7 +450,8 @@ impl Launcher {
                     "net/neoforged/neoforge/{0}/neoforge-{0}-installer.jar",
                     "https://maven.neoforged.net/releases/net/neoforged/neoforge/{0}/neoforge-{0}-installer.jar",
                     false,
-                    true
+                    true,
+                    Loader::NeoForge,
                 ).await
             },
         }
@@ -468,6 +470,7 @@ impl Launcher {
         installer_url: &'static str,
         check_mirrors: bool,
         neoforge_versioning: bool,
+        loader: Loader,
     ) -> Result<(Arc<MinecraftVersion>, AddVanillaJar), LaunchError> {
         launch_tracker.add_count(1);
         launch_tracker.notify();
@@ -510,7 +513,10 @@ impl Launcher {
                 }
             }
             let Some(latest_loader_version) = latest_loader_version else {
-                return Err(LaunchError::CantFindVersion(instance_info.minecraft_version.as_str()));
+                return Err(LaunchError::CantFindLoader {
+                    loader,
+                    minecraft: instance_info.minecraft_version.as_str()
+                });
             };
 
             latest_loader_version
