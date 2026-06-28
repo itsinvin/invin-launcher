@@ -14,7 +14,7 @@ use rc_zip_sync::{ArchiveHandle, ReadZip};
 use regex::Regex;
 use rustc_hash::FxHashMap;
 use schema::{
-    assets_index::AssetsIndex, fabric_launch::FabricLaunch, forge::{ForgeInstallProfile, ForgeInstallProfileLegacy, ForgeSide, VersionFragment}, instance::{AUTO_LIBRARY_PATH_GLFW, AUTO_LIBRARY_PATH_OPENAL, InstanceConfiguration, InstanceWrapperCommandConfiguration}, java_runtime_component::{JavaRuntimeComponentFile, JavaRuntimeComponentManifest}, loader::Loader, maven::MavenCoordinate, version::{
+    assets_index::AssetsIndex, fabric_launch::FabricLaunch, forge::{ForgeInstallProfile, ForgeInstallProfileLegacy, ForgeSide}, instance::{AUTO_LIBRARY_PATH_GLFW, AUTO_LIBRARY_PATH_OPENAL, InstanceConfiguration, InstanceWrapperCommandConfiguration}, java_runtime_component::{JavaRuntimeComponentFile, JavaRuntimeComponentManifest}, loader::Loader, maven::MavenCoordinate, version::{
         GameLibrary, GameLibraryArtifact, GameLibraryDownloads, GameLibraryExtractOptions, GameLogging, LaunchArgument, LaunchArgumentValue, MinecraftVersion, OsArch, OsName, PartialMinecraftVersion, Rule, RuleAction
     }, version_manifest::MinecraftVersionManifest
 };
@@ -417,20 +417,25 @@ impl Launcher {
                 launch_tracker.notify();
 
                 // Download Minecraft manifest and neoforge installer maven
-                let (minecraft_versions, loader_versions) = futures::future::try_join(
+                let (minecraft_versions, manifest) = futures::future::try_join(
                     self.meta.fetch(&MinecraftVersionManifestMetadataItem),
                     self.meta.fetch(&ForgeInstallerMavenMetadataItem)
                 ).await?;
 
+                let Some(loader_version) = instance_info.determine_forge_loader_version(&manifest) else {
+                    return Err(LaunchError::CantFindLoader {
+                        loader: Loader::NeoForge,
+                        minecraft: instance_info.minecraft_version.as_str()
+                    });
+                };
+
                 self.create_forgelike_launch_version(http_client, progress_trackers, launch_tracker, instance_info,
                     minecraft_versions,
-                    &loader_versions.0,
+                    loader_version,
                     "https://maven.minecraftforge.net/net/minecraftforge/forge/{0}/forge-{0}-installer.jar.sha1",
                     "net/minecraftforge/forge/{0}/forge-{0}-installer.jar",
                     "https://maven.minecraftforge.net/net/minecraftforge/forge/{0}/forge-{0}-installer.jar",
                     true,
-                    false,
-                    Loader::Forge,
                 ).await
             },
             Loader::NeoForge => {
@@ -438,20 +443,25 @@ impl Launcher {
                 launch_tracker.notify();
 
                 // Download Minecraft manifest and neoforge installer maven
-                let (minecraft_versions, loader_versions) = futures::future::try_join(
+                let (minecraft_versions, manifest) = futures::future::try_join(
                     self.meta.fetch(&MinecraftVersionManifestMetadataItem),
                     self.meta.fetch(&NeoforgeInstallerMavenMetadataItem)
                 ).await?;
 
+                let Some(loader_version) = instance_info.determine_neoforge_loader_version(&manifest) else {
+                    return Err(LaunchError::CantFindLoader {
+                        loader: Loader::NeoForge,
+                        minecraft: instance_info.minecraft_version.as_str()
+                    });
+                };
+
                 self.create_forgelike_launch_version(http_client, progress_trackers, launch_tracker, instance_info,
                     minecraft_versions,
-                    &loader_versions.0,
+                    loader_version,
                     "https://maven.neoforged.net/releases/net/neoforged/neoforge/{0}/neoforge-{0}-installer.jar.sha1",
                     "net/neoforged/neoforge/{0}/neoforge-{0}-installer.jar",
                     "https://maven.neoforged.net/releases/net/neoforged/neoforge/{0}/neoforge-{0}-installer.jar",
                     false,
-                    true,
-                    Loader::NeoForge,
                 ).await
             },
         }
@@ -464,62 +474,17 @@ impl Launcher {
         launch_tracker: &ProgressTracker,
         instance_info: &InstanceConfiguration,
         minecraft_versions: Arc<MinecraftVersionManifest>,
-        loader_versions: &[Ustr],
+        loader_version: Ustr,
         installer_hash_url: &'static str,
         installer_path: &'static str,
         installer_url: &'static str,
         check_mirrors: bool,
-        neoforge_versioning: bool,
-        loader: Loader,
     ) -> Result<(Arc<MinecraftVersion>, AddVanillaJar), LaunchError> {
         launch_tracker.add_count(1);
         launch_tracker.notify();
 
         let Some(version_link) = minecraft_versions.versions.iter().find(|v| v.id == instance_info.minecraft_version) else {
             return Err(LaunchError::CantFindVersion(instance_info.minecraft_version.as_str()));
-        };
-
-        let loader_version = if let Some(preferred_loader_version) = instance_info.preferred_loader_version {
-            preferred_loader_version
-        } else {
-            let mut minecraft_version_parts = VersionFragment::string_to_parts(instance_info.minecraft_version.as_str());
-            if neoforge_versioning {
-                // 1.21.5 -> 21.5
-                // 25w14craftmine -> 0.25w14craftmine
-                // 1.21 -> 21.0
-                // 26.1 -> 26.1.0
-                if minecraft_version_parts[0] == VersionFragment::String("25w14craftmine".into()) {
-                    minecraft_version_parts.insert(0, VersionFragment::Number(0))
-                } else {
-                    if minecraft_version_parts.len() < 3 {
-                        minecraft_version_parts.push(VersionFragment::Number(0))
-                    }
-                    if minecraft_version_parts[0] == VersionFragment::Number(1) {
-                        minecraft_version_parts.remove(0);
-                    }
-                }
-            }
-
-            let mut latest_loader_version = None;
-            let mut latest_loader_version_parts = Vec::new();
-            for version in loader_versions.iter() {
-                let parts = VersionFragment::string_to_parts(version);
-
-                if parts.starts_with(&minecraft_version_parts) {
-                    if parts > latest_loader_version_parts {
-                        latest_loader_version_parts = parts;
-                        latest_loader_version = Some(version.clone());
-                    }
-                }
-            }
-            let Some(latest_loader_version) = latest_loader_version else {
-                return Err(LaunchError::CantFindLoader {
-                    loader,
-                    minecraft: instance_info.minecraft_version.as_str()
-                });
-            };
-
-            latest_loader_version
         };
 
         // Download base Minecraft version and neoforge installer hash
