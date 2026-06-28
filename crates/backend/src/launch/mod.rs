@@ -315,8 +315,9 @@ impl Launcher {
                 let meta3 = Arc::clone(&self.meta);
                 let instance_version = instance_info.minecraft_version;
 
-                let versions = self.meta.fetch(&MinecraftVersionManifestMetadataItem).map_err(LaunchError::from);
-                let version = versions.and_then(async move |versions| {
+                let version_future = self.meta.fetch(&MinecraftVersionManifestMetadataItem)
+                    .map_err(LaunchError::from)
+                    .and_then(async move |versions| {
                     launch_tracker3.add_count(1);
                     launch_tracker3.notify();
 
@@ -333,7 +334,7 @@ impl Launcher {
                 });
 
                 let (version, fabric_launch): (Arc<MinecraftVersion>, Arc<FabricLaunch>) =
-                    futures::future::try_join(version, fabric_launch).await?;
+                    futures::future::try_join(version_future, fabric_launch).await?;
 
                 let mut version: MinecraftVersion = (*version).clone();
 
