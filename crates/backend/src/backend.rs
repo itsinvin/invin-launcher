@@ -1294,7 +1294,7 @@ impl BackendState {
                     uuid,
                     username,
                     access_token: None,
-                })
+                });
             }
 
             return None;
