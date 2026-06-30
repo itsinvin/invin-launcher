@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+/* invin launcher design tokens.
+   Theme is controlled at runtime via the `data-theme` attribute (light/dark)
+   and a `--accent` custom property set from the settings store. */
+
+@theme {
+  --color-bg: var(--invin-bg);
+  --color-surface: var(--invin-surface);
+  --color-surface-2: var(--invin-surface-2);
+  --color-border: var(--invin-border);
+  --color-text: var(--invin-text);
+  --color-muted: var(--invin-muted);
+  --color-accent: var(--invin-accent);
+  --color-accent-fg: var(--invin-accent-fg);
+
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+:root,
+:root[data-theme='dark'] {
+  --invin-bg: #0c0d12;
+  --invin-surface: #14161d;
+  --invin-surface-2: #1c1f29;
+  --invin-border: #262a36;
+  --invin-text: #e7e9ee;
+  --invin-muted: #8a909e;
+  --invin-accent: #7c5cff;
+  --invin-accent-fg: #ffffff;
+}
+
+:root[data-theme='light'] {
+  --invin-bg: #f5f6f9;
+  --invin-surface: #ffffff;
+  --invin-surface-2: #eef0f5;
+  --invin-border: #dfe2ea;
+  --invin-text: #1a1c22;
+  --invin-muted: #5d6472;
+  --invin-accent: #7c5cff;
+  --invin-accent-fg: #ffffff;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* Utility component classes */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-accent-fg);
+  }
+  .btn-primary:hover:not(:disabled) {
+    filter: brightness(1.1);
+  }
+  .btn-ghost {
+    @apply text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-2)];
+  }
+  .btn-outline {
+    @apply border border-[color:var(--color-border)] text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-2)];
+  }
+  .card {
+    @apply rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)];
+  }
+  .input {
+    @apply w-full rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-2)] px-3 py-2 text-sm outline-none placeholder:text-[color:var(--color-muted)] focus:border-[color:var(--color-accent)];
+  }
+}

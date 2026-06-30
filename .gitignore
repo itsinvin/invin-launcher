@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# SvelteKit
+.svelte-kit/
+build/
+.vercel/
+.output/
+
+# Vite
+dist/
+
+# Tauri / Rust
+src-tauri/target/
+src-tauri/gen/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/*
+!.vscode/extensions.json
