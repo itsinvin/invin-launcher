@@ -100,24 +100,23 @@ export const detectHardware = () =>
   cmd<HardwareProfile>('detect_hardware', {}, () => browser.detectHardware());
 
 /**
- * Predict performance for a hardware + workload pair. The native backend runs the
- * mirrored Rust engine; in the browser we run the TypeScript engine directly.
+ * Predict performance for a hardware + workload pair.
+ *
+ * Prediction is pure computation, so it always runs in the (unit-tested) TypeScript
+ * engine in both browser and native modes — this guarantees identical results
+ * everywhere. The Rust backend mirrors the same model (`invin-core`) for any
+ * server-side use and to keep the two implementations in lock-step.
  */
-export const predictPerformance = (hardware: HardwareProfile, workload: WorkloadProfile) =>
-  cmd<PerformancePrediction>('predict_performance', { hardware, workload }, () =>
-    predictLocal(hardware, workload)
-  );
+export const predictPerformance = (hardware: HardwareProfile, workload: WorkloadProfile): PerformancePrediction =>
+  predictLocal(hardware, workload);
 
 /** Build a WorkloadProfile from an existing instance (analyses its installed mods). */
 export async function analyzeInstanceWorkload(instanceId: string): Promise<WorkloadProfile> {
-  if (isTauri()) {
-    return invoke<WorkloadProfile>('analyze_instance_workload', { instanceId });
-  }
-  const instances = await browser.listInstances();
-  const inst = instances.find((i) => i.id === instanceId);
+  const all = await listInstances();
+  const inst = all.find((i) => i.id === instanceId);
   if (!inst) throw new Error('instance not found');
-  const mods = browser.listInstalledMods(instanceId);
-  const settings = browser.getSettings();
+  const mods = await listInstalledMods(instanceId);
+  const settings = await getSettings();
   return workloadFromInstance(inst, mods, settings.defaultMemoryMb);
 }
 
