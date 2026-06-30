@@ -1,10 +1,9 @@
-import { sveltekit } from '@sveltejs/vite-plugin-svelte';
+import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
 const host = process.env.TAURI_DEV_HOST;
 
-// @ts-expect-error process is a nodejs global
 export default defineConfig(async () => ({
   plugins: [tailwindcss(), sveltekit()],
 

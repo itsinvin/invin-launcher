@@ -7,6 +7,7 @@
     { href: '/', label: 'Home', icon: 'home' },
     { href: '/instances', label: 'Instances', icon: 'grid' },
     { href: '/mods', label: 'Mods', icon: 'package' },
+    { href: '/performance', label: 'Performance', icon: 'activity' },
     { href: '/accounts', label: 'Accounts', icon: 'user' },
     { href: '/settings', label: 'Settings', icon: 'settings' }
   ];

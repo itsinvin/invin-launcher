@@ -1,0 +1,14 @@
+[package]
+name = "invin-core"
+version = "0.1.0"
+edition = "2021"
+description = "Core logic for the invin launcher: hardware detection and performance prediction"
+license = "MIT"
+
+[lib]
+name = "invin_core"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+sysinfo = "0.32"
