@@ -8,12 +8,19 @@
   import { accounts } from '$lib/stores/accounts.svelte';
   import { instances } from '$lib/stores/instances.svelte';
   import { progress } from '$lib/stores/progress.svelte';
+  import { hardware } from '$lib/stores/hardware.svelte';
 
   let { children } = $props();
   let ready = $state(false);
 
   onMount(async () => {
-    await Promise.all([settings.load(), accounts.load(), instances.init(), progress.init()]);
+    await Promise.all([
+      settings.load(),
+      accounts.load(),
+      instances.init(),
+      progress.init(),
+      hardware.init()
+    ]);
     ready = true;
   });
 </script>
