@@ -1,0 +1,73 @@
+# Build the Windows NSIS installer (.exe) and publish it to a GitHub Release.
+#
+# Trigger by pushing a version tag:
+#   git tag app-v0.1.0 && git push origin app-v0.1.0
+# Or run manually from the Actions tab (workflow_dispatch).
+
+name: release
+
+on:
+  push:
+    tags:
+      - 'app-v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g. 0.1.0). Only used for manual runs; tag pushes use tauri.conf.json.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    name: Windows NSIS installer
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: npm
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri -> target
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build and publish release
+        uses: tauri-apps/tauri-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: .
+          tagName: app-v__VERSION__
+          releaseName: invin launcher v__VERSION__
+          releaseBody: |
+            ## invin launcher v__VERSION__
+
+            Hardware-aware Minecraft launcher with performance prediction.
+
+            ### Windows install
+            Download **`invin-launcher_*_x64-setup.exe`** below and run the installer.
+            No admin rights required (per-user install).
+
+            ### What's included
+            - Performance Predictor — estimate FPS/RAM/bottleneck before installing a modpack
+            - Instance management, Modrinth mod browser, Microsoft/offline accounts
+            - Vanilla + Fabric + Quilt launching with log redaction
+
+            See the [README](https://github.com/itsinvin/invin-launcher#readme) for Microsoft login setup (`INVIN_AZURE_CLIENT_ID`).
+          releaseDraft: false
+          prerelease: false
+          args: ''

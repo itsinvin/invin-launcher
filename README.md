@@ -107,6 +107,19 @@ export INVIN_AZURE_CLIENT_ID="<your-azure-app-client-id>"
 
 Offline profiles work without any configuration.
 
+## Releases (Windows installer)
+
+Pre-built Windows installers are published on [GitHub Releases](https://github.com/itsinvin/invin-launcher/releases). Download the `invin-launcher_*_x64-setup.exe` asset and run it.
+
+To cut a new release, push a version tag (must match `version` in `src-tauri/tauri.conf.json`):
+
+```bash
+git tag app-v0.1.0
+git push origin app-v0.1.0
+```
+
+This triggers the [release workflow](.github/workflows/release.yml), which builds the NSIS `.exe` installer on `windows-latest` and attaches it to the GitHub Release automatically.
+
 ## Roadmap
 
 See [`docs/ROADMAP.md`](docs/ROADMAP.md) for the planned feature set and enhancements.
