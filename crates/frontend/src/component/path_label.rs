@@ -3,7 +3,7 @@ use std::{cell::RefCell, ops::Range, path::{Component, Path}, rc::Rc, sync::{Arc
 use gpui::{AvailableSpace, Element, ElementId, IntoElement, ParentElement, ShapedLine, SharedString, Size, Style, Styled, TextStyle, px};
 use gpui_component::button::{Button, ButtonVariants};
 
-use crate::{icon::PandoraIcon};
+use crate::{icon::QuartzIcon};
 
 #[derive(Clone)]
 pub struct PathLabel {
@@ -24,9 +24,9 @@ impl PathLabel {
     pub fn button(&self, id: impl Into<ElementId>) -> Button {
         let state = self.state.borrow();
         let icon = if state.is_folder {
-            PandoraIcon::Folder
+            QuartzIcon::Folder
         } else {
-            PandoraIcon::File
+            QuartzIcon::File
         };
         Button::new(id).success().icon(icon).child(self.clone()).overflow_x_hidden().tooltip(state.lossy_path_name.clone())
     }
@@ -35,7 +35,7 @@ impl PathLabel {
         if let Some(label) = label {
             label.button(id)
         } else {
-            Button::new(id).success().icon(PandoraIcon::File).overflow_x_hidden().label(t::common::unset())
+            Button::new(id).success().icon(QuartzIcon::File).overflow_x_hidden().label(t::common::unset())
         }
     }
 }

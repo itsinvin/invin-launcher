@@ -3,7 +3,7 @@ use std::sync::Arc;
 use gpui_component::{ActiveTheme, Icon, h_flex};
 use gpui::*;
 
-use crate::{entity::DataEntities, icon::PandoraIcon, ui::PageType};
+use crate::{entity::DataEntities, icon::QuartzIcon, ui::PageType};
 
 #[derive(IntoElement)]
 pub struct PagePath {
@@ -42,7 +42,7 @@ impl RenderOnce for PagePath {
                     }).into_any_element();
                 [
                     item,
-                    Icon::new(PandoraIcon::ChevronRight).size_3p5().into_any_element()
+                    Icon::new(QuartzIcon::ChevronRight).size_3p5().into_any_element()
                 ]
             }))
             .child(div().text_color(cx.theme().foreground).child(self.main_page.title(&self.data, cx)))

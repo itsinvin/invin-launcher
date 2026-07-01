@@ -12,7 +12,7 @@ use gpui_component::{
 };
 
 use crate::{
-    entity::instance::InstanceEntry, icon::PandoraIcon, interface_config::InterfaceConfig, png_render_cache, root,
+    entity::instance::InstanceEntry, icon::QuartzIcon, interface_config::InterfaceConfig, png_render_cache, root,
 };
 
 pub struct InstanceQuickplaySubpage {
@@ -256,7 +256,7 @@ impl ListDelegate for WorldsListDelegate {
                 .gap_1()
                 .child(
                     div()
-                        .child(Button::new(ix).success().icon(PandoraIcon::Play).on_click(move |_, window, cx| {
+                        .child(Button::new(ix).success().icon(QuartzIcon::Play).on_click(move |_, window, cx| {
                             root::start_instance(
                                 id,
                                 name.clone(),
@@ -396,7 +396,7 @@ impl ListDelegate for ServersListDelegate {
         let move_up = Button::new(("server-up", row_index))
             .compact()
             .small()
-            .icon(PandoraIcon::ArrowUp)
+            .icon(QuartzIcon::ArrowUp)
             .disabled(!can_reorder || row_index == 0)
             .on_click(cx.listener(move |this, _, _, cx| {
                 let delegate = this.delegate_mut();
@@ -409,7 +409,7 @@ impl ListDelegate for ServersListDelegate {
         let move_down = Button::new(("server-down", row_index))
             .compact()
             .small()
-            .icon(PandoraIcon::ArrowDown)
+            .icon(QuartzIcon::ArrowDown)
             .disabled(!can_reorder || row_index + 1 >= self.searched.len())
             .on_click(cx.listener(move |this, _, _, cx| {
                 let delegate = this.delegate_mut();
@@ -426,7 +426,7 @@ impl ListDelegate for ServersListDelegate {
                     .gap_1()
                     .child(
                         div()
-                            .child(Button::new(ix).success().icon(PandoraIcon::Play).on_click(move |_, window, cx| {
+                            .child(Button::new(ix).success().icon(QuartzIcon::Play).on_click(move |_, window, cx| {
                                 root::start_instance(
                                     id,
                                     name.clone(),

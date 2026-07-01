@@ -4,7 +4,7 @@ use gpui_component::{ActiveTheme, Colorize, InteractiveElementExt, Sizable, butt
 use once_cell::sync::Lazy;
 use schema::pandora_update::UpdatePrompt;
 
-use crate::{component::page_path::PagePath, icon::PandoraIcon};
+use crate::{component::page_path::PagePath, icon::QuartzIcon};
 
 #[derive(IntoElement)]
 pub struct TitleBar {
@@ -54,7 +54,7 @@ impl RenderOnce for TitleBar {
                                 .compact()
                                 .small()
                                 .ml_2()
-                                .icon(PandoraIcon::Download)
+                                .icon(QuartzIcon::Download)
                                 .on_click({
                                     let send = self.send.clone();
                                     move |_, window, cx| {
@@ -137,7 +137,7 @@ impl RenderOnce for TitleBar {
                                 .compact()
                                 .small()
                                 .ml_2()
-                                .icon(PandoraIcon::Download)
+                                .icon(QuartzIcon::Download)
                                 .on_click({
                                     let send = self.send.clone();
                                     move |_, window, cx| {
@@ -216,10 +216,10 @@ impl RenderOnce for WindowControl {
                         WindowControl::Close => window.remove_window(),
                     }
                 }).child(match self {
-                    WindowControl::Minimize => PandoraIcon::WindowMinimize,
-                    WindowControl::Maximize => PandoraIcon::WindowMaximize,
-                    WindowControl::Restore => PandoraIcon::WindowRestore,
-                    WindowControl::Close => PandoraIcon::WindowClose,
+                    WindowControl::Minimize => QuartzIcon::WindowMinimize,
+                    WindowControl::Maximize => QuartzIcon::WindowMaximize,
+                    WindowControl::Restore => QuartzIcon::WindowRestore,
+                    WindowControl::Close => QuartzIcon::WindowClose,
                 })
         }
     }

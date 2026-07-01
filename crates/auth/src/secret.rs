@@ -251,17 +251,17 @@ mod inner {
         }
 
         pub async fn read_credentials(&self, uuid: Uuid) -> Result<Option<AccountCredentials>, SecretStorageError> {
-            let target_name = format!("PandoraLauncher_MinecraftAccount_{}", uuid.as_hyphenated());
+            let target_name = format!("QuartzLauncher_MinecraftAccount_{}", uuid.as_hyphenated());
 
             let mut account = AccountCredentials::default();
 
             let uuid = uuid.as_hyphenated();
-            account.msa_refresh = read_deserialize(&format!("PandoraLauncher_MsaRefresh_{}", uuid))?;
-            account.msa_refresh_force_client_id = read_deserialize(&format!("PandoraLauncher_MsaRefreshForceClientId_{}", uuid))?;
-            account.msa_access = read_deserialize(&format!("PandoraLauncher_MsaAccess_{}", uuid))?;
-            account.xbl = read_deserialize(&format!("PandoraLauncher_Xbl_{}", uuid))?;
-            account.xsts = read_deserialize(&format!("PandoraLauncher_Xsts_{}", uuid))?;
-            account.access_token = read_deserialize(&format!("PandoraLauncher_AccessToken_{}", uuid))?;
+            account.msa_refresh = read_deserialize(&format!("QuartzLauncher_MsaRefresh_{}", uuid))?;
+            account.msa_refresh_force_client_id = read_deserialize(&format!("QuartzLauncher_MsaRefreshForceClientId_{}", uuid))?;
+            account.msa_access = read_deserialize(&format!("QuartzLauncher_MsaAccess_{}", uuid))?;
+            account.xbl = read_deserialize(&format!("QuartzLauncher_Xbl_{}", uuid))?;
+            account.xsts = read_deserialize(&format!("QuartzLauncher_Xsts_{}", uuid))?;
+            account.access_token = read_deserialize(&format!("QuartzLauncher_AccessToken_{}", uuid))?;
 
             Ok(Some(account))
         }
@@ -272,12 +272,12 @@ mod inner {
             credentials: &AccountCredentials,
         ) -> Result<(), SecretStorageError> {
             let uuid = uuid.as_hyphenated();
-            write_serialize(&format!("PandoraLauncher_MsaRefresh_{}", uuid), credentials.msa_refresh.as_ref())?;
-            write_serialize(&format!("PandoraLauncher_MsaRefreshForceClientId_{}", uuid), credentials.msa_refresh_force_client_id.as_ref())?;
-            write_serialize(&format!("PandoraLauncher_MsaAccess_{}", uuid), credentials.msa_access.as_ref())?;
-            write_serialize(&format!("PandoraLauncher_Xbl_{}", uuid), credentials.xbl.as_ref())?;
-            write_serialize(&format!("PandoraLauncher_Xsts_{}", uuid), credentials.xsts.as_ref())?;
-            write_serialize(&format!("PandoraLauncher_AccessToken_{}", uuid), credentials.access_token.as_ref())?;
+            write_serialize(&format!("QuartzLauncher_MsaRefresh_{}", uuid), credentials.msa_refresh.as_ref())?;
+            write_serialize(&format!("QuartzLauncher_MsaRefreshForceClientId_{}", uuid), credentials.msa_refresh_force_client_id.as_ref())?;
+            write_serialize(&format!("QuartzLauncher_MsaAccess_{}", uuid), credentials.msa_access.as_ref())?;
+            write_serialize(&format!("QuartzLauncher_Xbl_{}", uuid), credentials.xbl.as_ref())?;
+            write_serialize(&format!("QuartzLauncher_Xsts_{}", uuid), credentials.xsts.as_ref())?;
+            write_serialize(&format!("QuartzLauncher_AccessToken_{}", uuid), credentials.access_token.as_ref())?;
 
             Ok(())
         }
@@ -285,30 +285,30 @@ mod inner {
         pub async fn delete_credentials(&self, uuid: Uuid) -> Result<(), SecretStorageError> {
             let uuid = uuid.as_hyphenated();
             [
-                delete(&format!("PandoraLauncher_MsaRefresh_{}", uuid)),
-                delete(&format!("PandoraLauncher_MsaRefreshForceClientId_{}", uuid)),
-                delete(&format!("PandoraLauncher_MsaAccess_{}", uuid)),
-                delete(&format!("PandoraLauncher_Xbl_{}", uuid)),
-                delete(&format!("PandoraLauncher_Xsts_{}", uuid)),
-                delete(&format!("PandoraLauncher_AccessToken_{}", uuid)),
+                delete(&format!("QuartzLauncher_MsaRefresh_{}", uuid)),
+                delete(&format!("QuartzLauncher_MsaRefreshForceClientId_{}", uuid)),
+                delete(&format!("QuartzLauncher_MsaAccess_{}", uuid)),
+                delete(&format!("QuartzLauncher_Xbl_{}", uuid)),
+                delete(&format!("QuartzLauncher_Xsts_{}", uuid)),
+                delete(&format!("QuartzLauncher_AccessToken_{}", uuid)),
             ].into_iter().collect::<Result<(), _>>()?;
 
             Ok(())
         }
 
         pub async fn read_proxy_password(&self) -> Result<Option<String>, SecretStorageError> {
-            let Some(bytes) = read("PandoraLauncher_ProxyPassword")? else {
+            let Some(bytes) = read("QuartzLauncher_ProxyPassword")? else {
                 return Ok(None);
             };
             Ok(Some(String::from_utf8(bytes).map_err(|_| SecretStorageError::SerializationError)?))
         }
 
         pub async fn write_proxy_password(&self, password: &str) -> Result<(), SecretStorageError> {
-            write("PandoraLauncher_ProxyPassword", Some(password.as_bytes().to_vec()))
+            write("QuartzLauncher_ProxyPassword", Some(password.as_bytes().to_vec()))
         }
 
         pub async fn delete_proxy_password(&self) -> Result<(), SecretStorageError> {
-            delete("PandoraLauncher_ProxyPassword")
+            delete("QuartzLauncher_ProxyPassword")
         }
     }
 }

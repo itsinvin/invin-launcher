@@ -8,7 +8,7 @@ use gpui_component::{
 use once_cell::sync::Lazy;
 use rustc_hash::FxHashSet;
 
-use crate::{entity::DataEntities, icon::PandoraIcon, pages::page::Page};
+use crate::{entity::DataEntities, icon::QuartzIcon, pages::page::Page};
 
 pub struct SyncingPage {
     backend_handle: BackendHandle,
@@ -126,7 +126,7 @@ impl SyncingPage {
                     .text()
                     .text_color(warning)
                     .compact()
-                    .icon(PandoraIcon::TriangleAlert)
+                    .icon(QuartzIcon::TriangleAlert)
                     .label(t::instance::sync::unable_count(cannot_sync_count, sync_state.total_count))
                     .tooltip(cannot_sync_tooltip));
             }
@@ -163,7 +163,7 @@ impl Render for SyncingPage {
         let info = cx.theme().blue;
         let content = v_flex().size_full().p_3().gap_3()
             .child(t::instance::sync::description())
-            .child(Button::new("open").info().icon(PandoraIcon::FolderOpen).label(t::instance::sync::open_folder()).on_click(move |_, window, cx| {
+            .child(Button::new("open").info().icon(QuartzIcon::FolderOpen).label(t::instance::sync::open_folder()).on_click(move |_, window, cx| {
                 crate::open_folder(&sync_folder, window, cx);
             }).w_72())
             .child(div().border_b_1().border_color(cx.theme().border).text_lg().child(t::instance::sync::files()))

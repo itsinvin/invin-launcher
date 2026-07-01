@@ -1,8 +1,8 @@
 [workspace]
 resolver = "3"
-members = ["crates/backend", "crates/bridge", "crates/reqwest_client", "crates/frontend", "crates/pandora_launcher", "crates/nbt", "crates/schema", "crates/auth"]
+members = ["crates/backend", "crates/bridge", "crates/reqwest_client", "crates/frontend", "crates/quartz_launcher", "crates/nbt", "crates/schema", "crates/auth", "crates/prediction"]
 
-default-members = ["crates/pandora_launcher"]
+default-members = ["crates/quartz_launcher"]
 
 [workspace.package]
 edition = "2024"
@@ -28,6 +28,7 @@ schema = { path = "crates/schema" }
 t = { path = "crates/t" }
 nbt = { path = "crates/nbt" }
 reqwest_client = { path = "crates/reqwest_client" }
+prediction = { path = "crates/prediction" }
 
 anyhow = "1.0.100"
 atomic-time = "0.1.5"

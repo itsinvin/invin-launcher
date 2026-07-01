@@ -8,7 +8,7 @@ use gpui_component::{
     button::{Button, ButtonVariants}, h_flex, select::{Select, SelectEvent, SelectState}, spinner::Spinner, v_flex, ActiveTheme as _, Sizable
 };
 
-use crate::{component::{named_dropdown::{NamedDropdown, NamedDropdownItem}, readonly_text_field::{ReadonlyTextField, ReadonlyTextFieldWithControls}}, entity::instance::InstanceEntry, icon::PandoraIcon, root};
+use crate::{component::{named_dropdown::{NamedDropdown, NamedDropdownItem}, readonly_text_field::{ReadonlyTextField, ReadonlyTextFieldWithControls}}, entity::instance::InstanceEntry, icon::QuartzIcon, root};
 
 pub struct InstanceLogsSubpage {
     instance: InstanceID,
@@ -184,9 +184,9 @@ impl Render for InstanceLogsSubpage {
             } else if self.available_logs.is_some() {
                 content = content.child(h_flex().justify_center().size_full().text_lg()
                     .gap_2()
-                    .child(PandoraIcon::ArrowUp)
+                    .child(QuartzIcon::ArrowUp)
                     .child(t::instance::logs::select_file())
-                    .child(PandoraIcon::ArrowUp));
+                    .child(QuartzIcon::ArrowUp));
             }
         }
 

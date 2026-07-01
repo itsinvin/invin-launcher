@@ -12,7 +12,7 @@ use serde::{Deserialize, Serialize};
 use crate::{
     component::{menu::{MenuGroup, MenuGroupItem}, page_path::PagePath, resize_panel::{ResizePanel, ResizePanelState}, shrinking_text::ShrinkingText, title_bar::TitleBar}, entity::{
         DataEntities, account::AccountExt, instance::{InstanceAddedEvent, InstanceEntries, InstanceModifiedEvent, InstanceMovedToTopEvent, InstanceRemovedEvent}
-    }, icon::PandoraIcon, interface_config::InterfaceConfig, modals, pages::{curseforge_page::CurseforgeSearchPage, import::ImportPage, instance::instance_page::InstancePage, instances_page::InstancesPage, modrinth_page::ModrinthSearchPage, modrinth_project_page::ModrinthProjectPage, page::Page, skins_page::SkinsPage, syncing_page::SyncingPage}, png_render_cache,
+    }, icon::QuartzIcon, interface_config::InterfaceConfig, modals, pages::{curseforge_page::CurseforgeSearchPage, import::ImportPage, instance::instance_page::InstancePage, instances_page::InstancesPage, modrinth_page::ModrinthSearchPage, modrinth_project_page::ModrinthProjectPage, page::Page, performance_page::PerformancePage, skins_page::SkinsPage, syncing_page::SyncingPage}, png_render_cache,
 };
 
 pub struct LauncherUI {
@@ -45,6 +45,7 @@ pub enum PageType {
     },
     Import,
     Syncing,
+    Performance,
     ModrinthProject {
         project_id: SharedString,
         project_title: SharedString,
@@ -76,6 +77,7 @@ impl PageType {
             },
             PageType::Import => "Import".into(),
             PageType::Syncing => t::instance::sync::label().into(),
+            PageType::Performance => t::tools::performance::title().into(),
             PageType::ModrinthProject { project_title, .. } => project_title.clone(),
             PageType::InstancePage { name } => {
                 InstanceEntries::find_title_by_name(&data.instances, name, cx)
@@ -93,6 +95,7 @@ pub enum LauncherPage {
     Curseforge(Entity<CurseforgeSearchPage>),
     Import(Entity<ImportPage>),
     Syncing(Entity<SyncingPage>),
+    Performance(Entity<PerformancePage>),
     ModrinthProject(Entity<ModrinthProjectPage>),
     InstancePage(Entity<InstancePage>),
 }
@@ -112,6 +115,7 @@ impl LauncherPage {
             LauncherPage::Curseforge(entity) => process(entity, window, cx),
             LauncherPage::Import(entity) => process(entity, window, cx),
             LauncherPage::Syncing(entity) => process(entity, window, cx),
+            LauncherPage::Performance(entity) => process(entity, window, cx),
             LauncherPage::ModrinthProject(entity) => process(entity, window, cx),
             LauncherPage::InstancePage(entity) => process(entity, window, cx),
         };
@@ -286,6 +290,9 @@ impl LauncherUI {
             PageType::Syncing => {
                 Ok(LauncherPage::Syncing(cx.new(|cx| SyncingPage::new(data, window, cx))))
             },
+            PageType::Performance => {
+                Ok(LauncherPage::Performance(cx.new(|cx| PerformancePage::new(data, window, cx))))
+            },
             PageType::ModrinthProject { project_id, install_for, project_title } => {
                 let install_for_id = install_for.as_ref().map(|name| InstanceEntries::find_id_by_name(&data.instances, name, cx));
 
@@ -444,11 +451,19 @@ impl Render for LauncherUI {
                     launcher.switch_page(PageType::Syncing, &[], window, cx);
                 })));
 
-        let mut groups: heapless::Vec<MenuGroup, 4> = heapless::Vec::new();
+        let tools_group = MenuGroup::new(t::tools::title())
+            .child(MenuGroupItem::new(t::tools::performance::title())
+                .active(page_type == PageType::Performance)
+                .on_click(cx.listener(|launcher, _, window, cx| {
+                    launcher.switch_page(PageType::Performance, &[], window, cx);
+                })));
+
+        let mut groups: heapless::Vec<MenuGroup, 5> = heapless::Vec::new();
 
         let _ = groups.push(library_group);
         let _ = groups.push(content_group);
         let _ = groups.push(files_group);
+        let _ = groups.push(tools_group);
 
         if !self.recent_instances.is_empty() {
             let mut recent_instances_group = MenuGroup::new(t::instance::recent());
@@ -525,7 +540,7 @@ impl Render for LauncherUI {
                 this.bg(cx.theme().sidebar_accent)
                     .text_color(cx.theme().sidebar_accent_foreground)
             })
-            .child(PandoraIcon::Settings)
+            .child(QuartzIcon::Settings)
             .on_click({
                 let data = self.data.clone();
                 move |_, window, cx| {
@@ -541,7 +556,7 @@ impl Render for LauncherUI {
                 this.bg(cx.theme().sidebar_accent)
                     .text_color(cx.theme().sidebar_accent_foreground)
             })
-            .child(PandoraIcon::Bug)
+            .child(QuartzIcon::Bug)
             .tooltip(move |window, cx| {
                 Tooltip::new("Report a bug").build(window, cx)
             })
@@ -559,7 +574,7 @@ impl Render for LauncherUI {
             .w_full()
             .justify_center()
             .text_size(rems(0.9375))
-            .child(Icon::new(PandoraIcon::Pandora).size_8().min_w_8().min_h_8())
+            .child(Icon::new(QuartzIcon::Quartz).size_8().min_w_8().min_h_8())
             .child(t::common::app_name());
         let footer_buttons = h_flex().child(settings_button).child(bug_report_button);
         let footer = v_flex().pb_2().px_2().items_center().min_w_full().max_w_full().w_full().child(footer_buttons).child(account_button);

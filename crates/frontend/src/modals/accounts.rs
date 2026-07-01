@@ -8,7 +8,7 @@ use gpui_component::{
 use rand::Rng;
 use uuid::Uuid;
 
-use crate::{component::shrinking_text::ShrinkingText, entity::{DataEntities, account::{AccountEntries, AccountExt}}, icon::PandoraIcon, interface_config::InterfaceConfig, png_render_cache};
+use crate::{component::shrinking_text::ShrinkingText, entity::{DataEntities, account::{AccountEntries, AccountExt}}, icon::QuartzIcon, interface_config::InterfaceConfig, png_render_cache};
 
 const ACCOUNT_HEIGHT: f32 = 56.0;
 const ACCOUNT_GAP: f32 = 8.0;
@@ -62,7 +62,7 @@ impl Render for AccountDragPreview {
                     .bg(cx.theme().popover)
                     .text_color(cx.theme().popover_foreground)
                     .shadow_lg()
-                    .child(PandoraIcon::GripVertical)
+                    .child(QuartzIcon::GripVertical)
                     .child(ShrinkingText::new(self.name.clone())),
             )
     }
@@ -229,7 +229,7 @@ impl Render for Accounts {
                         .min_w_6()
                         .text_color(cx.theme().muted_foreground)
                         .hover(|style| style.text_color(cx.theme().foreground))
-                        .child(PandoraIcon::GripVertical)
+                        .child(QuartzIcon::GripVertical)
                         .cursor_grab()
                         .on_drag(drag_info, move |info: &AccountDragInfo, _, _, cx| {
                             cx.new(|_| AccountDragPreview {
@@ -251,7 +251,7 @@ impl Render for Accounts {
                         .group_hover(group_name.clone(), |style| style.visible())
                         .ghost()
                         .compact()
-                        .icon(PandoraIcon::Trash2)
+                        .icon(QuartzIcon::Trash2)
                         .h_8()
                         .w_8()
                         .danger()
@@ -268,13 +268,13 @@ impl Render for Accounts {
         v_flex()
             .gap(px(ACCOUNT_GAP))
             .h_full()
-            .child(Button::new("add-account").h_10().success().icon(PandoraIcon::Plus).label(t::account::add::label()).on_click({
+            .child(Button::new("add-account").h_10().success().icon(QuartzIcon::Plus).label(t::account::add::label()).on_click({
                 let backend_handle = self.backend_handle.clone();
                 move |_, window, cx| {
                     crate::root::start_new_account_login(&backend_handle, window, cx);
                 }
             }))
-            .child(Button::new("add-offline").h_10().success().icon(PandoraIcon::Plus).label(t::account::add::offline()).on_click({
+            .child(Button::new("add-offline").h_10().success().icon(QuartzIcon::Plus).label(t::account::add::offline()).on_click({
                 let backend_handle = self.backend_handle.clone();
                 move |_, window, cx| {
                     let name_input = cx.new(|cx| {

@@ -13,7 +13,7 @@ use strum::IntoEnumIterator;
 use crate::{
     component::error_alert::ErrorAlert, entity::{
         DataEntities, instance::ContentStates, metadata::{AsMetadataResult, FrontendMetadata, FrontendMetadataResult}
-    }, icon::PandoraIcon, pages::modrinth_page::{InstalledContent, PrimaryAction, env_display, get_primary_action, icon_for}, format_downloads
+    }, icon::QuartzIcon, pages::modrinth_page::{InstalledContent, PrimaryAction, env_display, get_primary_action, icon_for}, format_downloads
 };
 
 pub struct ModrinthProjectPage {
@@ -213,7 +213,7 @@ impl Render for ModrinthProjectPage {
                     Some(h_flex()
                         .gap_1()
                         .text_sm()
-                        .child(PandoraIcon::Tags)
+                        .child(QuartzIcon::Tags)
                         .child(text)
                         .into_any_element())
                 }
@@ -222,7 +222,7 @@ impl Render for ModrinthProjectPage {
             let stats = h_flex()
                 .gap_4()
                 .child(h_flex().gap_1()
-                    .child(PandoraIcon::Download)
+                    .child(QuartzIcon::Download)
                     .child(format_downloads(project.downloads)))
                 .when_some(categories_el, |this, el| this.child(el));
 
@@ -281,7 +281,7 @@ impl Render for ModrinthProjectPage {
             link_row = link_row.child(
                 Button::new("modrinth_web")
                     .label(t::modrinth::name())
-                    .icon(PandoraIcon::ExternalLink)
+                    .icon(QuartzIcon::ExternalLink)
                     .info()
                     .on_click({
                         let url = format!("https://modrinth.com/{}/{}", project_type_str, slug);
@@ -294,7 +294,7 @@ impl Render for ModrinthProjectPage {
                 link_row = link_row.child(
                     Button::new("source")
                         .label(t::instance::content::links::source())
-                        .icon(PandoraIcon::CodeXml)
+                        .icon(QuartzIcon::CodeXml)
                         .info()
                         .on_click(move |_, _, cx| { cx.open_url(&url); }),
                 );
@@ -304,7 +304,7 @@ impl Render for ModrinthProjectPage {
                 link_row = link_row.child(
                     Button::new("issues")
                         .label(t::instance::content::links::issues())
-                        .icon(PandoraIcon::Bug)
+                        .icon(QuartzIcon::Bug)
                         .info()
                         .on_click(move |_, _, cx| { cx.open_url(&url); }),
                 );
@@ -342,7 +342,7 @@ impl Render for ModrinthProjectPage {
                     .id("license")
                     .gap_1()
                     .text_sm()
-                    .child(PandoraIcon::Scroll)
+                    .child(QuartzIcon::Scroll)
                     .child(display_id);
 
                 if let Some(url) = url {
@@ -370,7 +370,7 @@ impl Render for ModrinthProjectPage {
                     h_flex()
                         .gap_1()
                         .text_sm()
-                        .child(PandoraIcon::Layers)
+                        .child(QuartzIcon::Layers)
                         .child(text)
                         .into_any_element()
                 });

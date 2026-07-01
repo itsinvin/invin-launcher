@@ -2429,6 +2429,7 @@ dependencies = [
  "once_cell",
  "open",
  "parking_lot",
+ "prediction",
  "rand 0.8.5",
  "relative-path",
  "reqwest_client",
@@ -5418,27 +5419,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pandora_launcher"
-version = "5.2.2"
-dependencies = [
- "backend",
- "backtrace",
- "bridge",
- "clap",
- "command",
- "directories",
- "fern",
- "frontend",
- "humantime",
- "log",
- "native-dialog",
- "parking_lot",
- "tokio",
- "tokio-util",
- "winresource",
-]
-
-[[package]]
 name = "parking"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5767,6 +5747,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "925383efa346730478fb4838dbe9137d2a47675ad789c546d150a6e1dd4ab31c"
 
 [[package]]
+name = "prediction"
+version = "5.2.2"
+dependencies = [
+ "serde",
+ "sysinfo",
+]
+
+[[package]]
 name = "presser"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5867,6 +5855,27 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f6d64c71eb498fe9eae14ce4ec935c555749aef511cca85b5568910d6e48001"
 dependencies = [
  "bytemuck",
+]
+
+[[package]]
+name = "quartz_launcher"
+version = "5.2.2"
+dependencies = [
+ "backend",
+ "backtrace",
+ "bridge",
+ "clap",
+ "command",
+ "directories",
+ "fern",
+ "frontend",
+ "humantime",
+ "log",
+ "native-dialog",
+ "parking_lot",
+ "tokio",
+ "tokio-util",
+ "winresource",
 ]
 
 [[package]]

@@ -5,5 +5,6 @@ pub mod curseforge_page;
 pub mod modrinth_page;
 pub mod modrinth_project_page;
 pub mod page;
+pub mod performance_page;
 pub mod skins_page;
 pub mod syncing_page;

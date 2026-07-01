@@ -6,7 +6,7 @@ use gpui_component::{
 use strum::IntoEnumIterator;
 
 use crate::{
-    component::{instance_list::InstanceList, named_dropdown::{NamedDropdown, NamedDropdownItem}, responsive_grid::ResponsiveGrid}, entity::{DataEntities, instance::InstanceEntries, metadata::FrontendMetadata}, icon::PandoraIcon, interface_config::{InstancesViewMode, InterfaceConfig}, pages::page::Page,
+    component::{instance_list::InstanceList, named_dropdown::{NamedDropdown, NamedDropdownItem}, responsive_grid::ResponsiveGrid}, entity::{DataEntities, instance::InstanceEntries, metadata::FrontendMetadata}, icon::QuartzIcon, interface_config::{InstancesViewMode, InterfaceConfig}, pages::page::Page,
 };
 
 pub struct InstancesPage {
@@ -54,7 +54,7 @@ impl Page for InstancesPage {
     fn controls(&mut self, _window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let create_instance = Button::new("create_instance")
             .success()
-            .icon(PandoraIcon::Plus)
+            .icon(QuartzIcon::Plus)
             .label(t::instance::create())
             .on_click(cx.listener(|this, _, window, cx| {
                 crate::modals::create_instance::open_create_instance(this.metadata.clone(), this.instances.clone(),

@@ -50,7 +50,7 @@ fn main() {
         base_dirs.data_dir().into()
     };
 
-    let launcher_dir = data_dir.join("PandoraLauncher");
+    let launcher_dir = data_dir.join("QuartzLauncher");
     _ = std::fs::create_dir_all(&launcher_dir);
     _ = std::env::set_current_dir(&launcher_dir);
 
@@ -455,7 +455,7 @@ fn start_deadlock_detection(deadlock_message: &Arc<parking_lot::lock_api::RwLock
 
 fn init_logging(level: log::LevelFilter, log_file: &Path) -> Result<(), fern::InitError> {
     let base_config = fern::Dispatch::new()
-        .level_for("pandora_launcher", level)
+        .level_for("quartz_launcher", level)
         .level_for("auth", level)
         .level_for("backend", level)
         .level_for("frontend", level)

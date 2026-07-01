@@ -153,10 +153,10 @@ pub mod common {
     }
     pub fn app_name() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Pandora",
-            2 => "Pandora",
-            3 => "Pandora",
-            _ => "Pandora",
+            1 => "Quartz",
+            2 => "Quartz",
+            3 => "Quartz",
+            _ => "Quartz",
         }
     }
     pub fn apply_changes() -> &'static str {
@@ -3719,7 +3719,7 @@ pub mod settings {
         }
         pub fn launcher_only_note() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Achtung - Proxyeinstellungen sind nur für Pandora, nicht für Minecraft",
+                1 => "Achtung - Proxyeinstellungen sind nur für Quartz, nicht für Minecraft",
                 2 => "Megjegyzés - A proxy beállítások csak az indítóra hatnak, nem a játékra",
                 3 => "Observera - Proxy inställningar gäller endast för launchern inte för själva spelet",
                 _ => "Note - Proxy settings only apply to the launcher, not the game itself",
@@ -4046,10 +4046,10 @@ pub mod system {
     }
     pub fn metadata_error() -> &'static str {
         match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-            1 => "Falscher Metadaten-Typ! Pandora Fehler!",
-            2 => "Hibás metaadat típus! Pandora hiba!",
-            3 => "Fel medatata typ! En bug hos oss (Pandora)",
-            _ => "Wrong metadata type! Pandora bug!",
+            1 => "Falscher Metadaten-Typ! Quartz Fehler!",
+            2 => "Hibás metaadat típus! Quartz hiba!",
+            3 => "Fel medatata typ! En bug hos oss (Quartz)",
+            _ => "Wrong metadata type! Quartz bug!",
         }
     }
     #[rustfmt::skip]
@@ -4131,11 +4131,225 @@ pub mod system {
         }
         pub fn title() -> &'static str {
             match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
-                1 => "Pandora aktualisieren?",
-                2 => "Frissíted a Pandorát?",
-                3 => "Uppdatera Pandora?",
-                _ => "Update Pandora?",
+                1 => "Quartz aktualisieren?",
+                2 => "Frissíted a Quartzot?",
+                3 => "Uppdatera Quartz?",
+                _ => "Update Quartz?",
             }
+        }
+    }
+}
+#[rustfmt::skip]
+pub mod tools {
+    pub fn get(key: &str) -> Option<&'static str> {
+        match key {
+            "title" => Some(title()),
+            _ => None,
+        }
+    }
+    #[rustfmt::skip]
+    pub mod performance {
+        pub fn get(key: &str) -> Option<&'static str> {
+            match key {
+                "allocated_ram" => Some(allocated_ram()),
+                "avg_fps" => Some(avg_fps()),
+                "bottleneck" => Some(bottleneck()),
+                "cpu" => Some(cpu()),
+                "detecting" => Some(detecting()),
+                "fps_range" => Some(fps_range()),
+                "gpu" => Some(gpu()),
+                "hardware" => Some(hardware()),
+                "heavy_mods" => Some(heavy_mods()),
+                "mod_count" => Some(mod_count()),
+                "optimization_mods" => Some(optimization_mods()),
+                "predict" => Some(predict()),
+                "ram" => Some(ram()),
+                "rating" => Some(rating()),
+                "recommendations" => Some(recommendations()),
+                "refresh" => Some(refresh()),
+                "render_distance" => Some(render_distance()),
+                "shaders" => Some(shaders()),
+                "subtitle" => Some(subtitle()),
+                "title" => Some(title()),
+                "workload" => Some(workload()),
+                _ => None,
+            }
+        }
+        pub fn allocated_ram() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Zugewiesener RAM",
+                2 => "Allokált RAM",
+                3 => "Allokerat RAM",
+                _ => "Allocated RAM",
+            }
+        }
+        pub fn avg_fps() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Durchschnittliche FPS",
+                2 => "Átlagos FPS",
+                3 => "Genomsnittlig FPS",
+                _ => "Average FPS",
+            }
+        }
+        pub fn bottleneck() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Engpass",
+                2 => "Szűk keresztmetszet",
+                3 => "Flaskhals",
+                _ => "Bottleneck",
+            }
+        }
+        pub fn cpu() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "CPU",
+                2 => "CPU",
+                3 => "CPU",
+                _ => "CPU",
+            }
+        }
+        pub fn detecting() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Hardware wird erkannt…",
+                2 => "Hardver felismerése…",
+                3 => "Identifierar hårdvara…",
+                _ => "Detecting hardware…",
+            }
+        }
+        pub fn fps_range() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Typischer Bereich",
+                2 => "Tipikus tartomány",
+                3 => "Typiskt intervall",
+                _ => "Typical range",
+            }
+        }
+        pub fn gpu() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "GPU",
+                2 => "GPU",
+                3 => "GPU",
+                _ => "GPU",
+            }
+        }
+        pub fn hardware() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Hardware",
+                2 => "Hardver",
+                3 => "Hårdvara",
+                _ => "Hardware",
+            }
+        }
+        pub fn heavy_mods() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Schwere Mods (Create usw.)",
+                2 => "Nehéz modok (Create stb.)",
+                3 => "Tunga mods (Create m.m.)",
+                _ => "Heavy mods (Create, etc.)",
+            }
+        }
+        pub fn mod_count() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Mod-Anzahl",
+                2 => "Modok száma",
+                3 => "Antal mods",
+                _ => "Mod count",
+            }
+        }
+        pub fn optimization_mods() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Optimierungs-Mods (z. B. Sodium)",
+                2 => "Optimalizáló modok (pl. Sodium)",
+                3 => "Optimeringsmods (t.ex. Sodium)",
+                _ => "Optimization mods (e.g. Sodium)",
+            }
+        }
+        pub fn predict() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Geschätzte Leistung",
+                2 => "Becsült teljesítmény",
+                3 => "Uppskattad prestanda",
+                _ => "Estimated performance",
+            }
+        }
+        pub fn ram() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "System-RAM",
+                2 => "Rendszer RAM",
+                3 => "System-RAM",
+                _ => "System RAM",
+            }
+        }
+        pub fn rating() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Bewertung",
+                2 => "Értékelés",
+                3 => "Betyg",
+                _ => "Rating",
+            }
+        }
+        pub fn recommendations() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Empfehlungen",
+                2 => "Javaslatok",
+                3 => "Rekommendationer",
+                _ => "Recommendations",
+            }
+        }
+        pub fn refresh() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Hardware aktualisieren",
+                2 => "Hardver frissítése",
+                3 => "Uppdatera hårdvara",
+                _ => "Refresh hardware",
+            }
+        }
+        pub fn render_distance() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Renderdistanz",
+                2 => "Render távolság",
+                3 => "Renderingsavstånd",
+                _ => "Render distance",
+            }
+        }
+        pub fn shaders() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Shader aktiviert",
+                2 => "Shaderek bekapcsolva",
+                3 => "Shaders aktiverade",
+                _ => "Shaders enabled",
+            }
+        }
+        pub fn subtitle() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Schätze, wie modifiziertes Minecraft auf deiner Hardware laufen könnte. Nur eines von vielen Werkzeugen.",
+                2 => "Becsüld meg, hogyan futhat a modolt Minecraft a hardvereden. Csak az egyik eszköz a sok közül.",
+                3 => "Uppskatta hur moddad Minecraft kan köras på din hårdvara. Ett av många verktyg.",
+                _ => "Estimate how modded Minecraft may run on your hardware. One of many tools — not required for launching.",
+            }
+        }
+        pub fn title() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Leistung",
+                2 => "Teljesítmény",
+                3 => "Prestanda",
+                _ => "Performance",
+            }
+        }
+        pub fn workload() -> &'static str {
+            match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+                1 => "Auslastung",
+                2 => "Terhelés",
+                3 => "Belastning",
+                _ => "Workload",
+            }
+        }
+    }
+    pub fn title() -> &'static str {
+        match crate::LANG.load(std::sync::atomic::Ordering::Relaxed) {
+            1 => "Werkzeuge",
+            2 => "Eszközök",
+            3 => "Verktyg",
+            _ => "Tools",
         }
     }
 }

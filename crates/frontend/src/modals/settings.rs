@@ -15,7 +15,7 @@ use gpui_component::{
 };
 use schema::backend_config::{BackendConfig, ProxyConfig, ProxyProtocol};
 
-use crate::{entity::DataEntities, icon::PandoraIcon, interface_config::InterfaceConfig};
+use crate::{entity::DataEntities, icon::QuartzIcon, interface_config::InterfaceConfig};
 
 #[derive(Clone, Copy, PartialEq, Eq, Default)]
 enum SettingsTab {
@@ -121,9 +121,9 @@ pub fn build_settings_sheet(data: &DataEntities, window: &mut Window, cx: &mut A
         version.into()
     };
     let version_icon = if version == "Dev" {
-        PandoraIcon::GitBranch
+        QuartzIcon::GitBranch
     } else {
-        PandoraIcon::Rocket
+        QuartzIcon::Rocket
     };
 
     move |sheet, _, cx| {
@@ -280,13 +280,13 @@ impl Settings {
                 t::settings::theme::title(),
                 Select::new(&self.theme_select)
             ))
-            .child(Button::new("open-theme-folder").info().icon(PandoraIcon::FolderOpen).label(t::settings::theme::open_folder()).on_click({
+            .child(Button::new("open-theme-folder").info().icon(QuartzIcon::FolderOpen).label(t::settings::theme::open_folder()).on_click({
                 let theme_folder = self.theme_folder.clone();
                 move |_, window, cx| {
                     crate::open_folder(&theme_folder, window, cx);
                 }
             }))
-            .child(Button::new("open-theme-repo").info().icon(PandoraIcon::Globe).label(t::settings::theme::open_repo()).on_click({
+            .child(Button::new("open-theme-repo").info().icon(QuartzIcon::Globe).label(t::settings::theme::open_repo()).on_click({
                 move |_, _, cx| {
                     cx.open_url("https://github.com/longbridge/gpui-component/tree/main/themes");
                 }

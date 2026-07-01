@@ -15,7 +15,7 @@ use schema::{loader::Loader, text_component::FlatTextComponent};
 use strum::IntoEnumIterator;
 use ustr::Ustr;
 
-use crate::{component::error_alert::ErrorAlert, icon::PandoraIcon, interface_config::{InstanceContentSortKey, InterfaceConfig}, png_render_cache};
+use crate::{component::error_alert::ErrorAlert, icon::QuartzIcon, interface_config::{InstanceContentSortKey, InterfaceConfig}, png_render_cache};
 
 #[derive(Clone)]
 struct ContentEntryChild {
@@ -135,7 +135,7 @@ impl ContentListDelegate {
         let element_id = summary.filename_hash;
 
         let delete_button = if self.confirming_delete.lock().contains(&element_id) {
-            Button::new(("delete", element_id)).danger().icon(PandoraIcon::Check).on_click({
+            Button::new(("delete", element_id)).danger().icon(QuartzIcon::Check).on_click({
                 let backend_handle = self.backend_handle.clone();
                 cx.listener(move |this, _, _, cx| {
                     cx.stop_propagation();
@@ -154,7 +154,7 @@ impl ContentListDelegate {
         } else {
             let confirming_delete = self.confirming_delete.clone();
             let backend_handle = self.backend_handle.clone();
-            Button::new(("delete", element_id)).danger().icon(PandoraIcon::Trash2).on_click(cx.listener(move |this, click: &ClickEvent, _, cx| {
+            Button::new(("delete", element_id)).danger().icon(QuartzIcon::Trash2).on_click(cx.listener(move |this, click: &ClickEvent, _, cx| {
                 cx.stop_propagation();
                 let delegate = this.delegate();
 
@@ -187,19 +187,19 @@ impl ContentListDelegate {
         let update_button = match status {
             bridge::instance::ContentUpdateStatus::Unknown => None,
             bridge::instance::ContentUpdateStatus::ManualInstall => Some(
-                Button::new(("update", element_id)).warning().icon(PandoraIcon::FileQuestionMark)
+                Button::new(("update", element_id)).warning().icon(QuartzIcon::FileQuestionMark)
                     .tooltip(t::instance::content::update::installed_manually())
             ),
             bridge::instance::ContentUpdateStatus::ErrorNotFound => Some(
-                Button::new(("update", element_id)).danger().icon(PandoraIcon::TriangleAlert)
+                Button::new(("update", element_id)).danger().icon(QuartzIcon::TriangleAlert)
                     .tooltip(t::instance::content::update::check::error_404())
             ),
             bridge::instance::ContentUpdateStatus::ErrorInvalidHash => Some(
-                Button::new(("update", element_id)).danger().icon(PandoraIcon::TriangleAlert)
+                Button::new(("update", element_id)).danger().icon(QuartzIcon::TriangleAlert)
                     .tooltip(t::instance::content::update::check::invalid_hash_error())
             ),
             bridge::instance::ContentUpdateStatus::AlreadyUpToDate => Some(
-                Button::new(("update", element_id)).icon(PandoraIcon::Check)
+                Button::new(("update", element_id)).icon(QuartzIcon::Check)
                     .tooltip(t::instance::content::update::check::last_up_to_date())
             ),
             bridge::instance::ContentUpdateStatus::Modrinth | bridge::instance::ContentUpdateStatus::Curseforge => {
@@ -211,7 +211,7 @@ impl ContentListDelegate {
 
                 let loading = self.updating.lock().contains(&element_id);
                 Some(
-                    Button::new(("update", element_id)).success().loading(loading).icon(PandoraIcon::Download)
+                    Button::new(("update", element_id)).success().loading(loading).icon(QuartzIcon::Download)
                         .tooltip(tooltip)
                         .on_click({
                             let backend_handle = self.backend_handle.clone();
@@ -276,9 +276,9 @@ impl ContentListDelegate {
 
         let controls = if let Some(expand_index) = expand_index {
             let expand_icon = if self.expanded.load(Ordering::Relaxed) == expand_index {
-                PandoraIcon::ArrowDown
+                QuartzIcon::ArrowDown
             } else {
-                PandoraIcon::ArrowRight
+                QuartzIcon::ArrowRight
             };
 
             let expand_control = Button::new(("expand", element_id)).icon(expand_icon).compact().small().info().on_click({

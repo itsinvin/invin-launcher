@@ -10,7 +10,7 @@ use rustc_hash::FxBuildHasher;
 
 use bridge::{game_output::GameOutputLogLevel, message::GameOutputMsg};
 
-use crate::{CloseWindow, icon::PandoraIcon};
+use crate::{CloseWindow, icon::QuartzIcon};
 
 struct CachedShapedLogLevels {
     fatal: Arc<ShapedLine>,
@@ -1067,7 +1067,7 @@ impl GameOutputRoot {
 
 impl Render for GameOutputRoot {
     fn render(&mut self, _window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
-        let search = Input::new(&self.search_state).prefix(Icon::new(PandoraIcon::Search).small());
+        let search = Input::new(&self.search_state).prefix(Icon::new(QuartzIcon::Search).small());
 
         let bar = h_flex()
             .w_full()

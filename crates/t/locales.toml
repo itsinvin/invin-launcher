@@ -579,10 +579,10 @@ hu = "Készítő"
 sv = "Skapare"
 
 [common.app_name]
-en = "Pandora"
-de = "Pandora"
-hu = "Pandora"
-sv = "Pandora"
+en = "Quartz"
+de = "Quartz"
+hu = "Quartz"
+sv = "Quartz"
 [common.unknown]
 en = "Unknown"
 de = "Unbekannt"
@@ -696,10 +696,10 @@ de = "Das Backend ist unerwartet abgestürzt"
 hu = "A háttérfolyamat váratlanul leállt"
 sv = "Backgrundsprocessen stoppades oväntat"
 [system.metadata_error]
-en = "Wrong metadata type! Pandora bug!"
-de = "Falscher Metadaten-Typ! Pandora Fehler!"
-hu = "Hibás metaadat típus! Pandora hiba!"
-sv = "Fel medatata typ! En bug hos oss (Pandora)"
+en = "Wrong metadata type! Quartz bug!"
+de = "Falscher Metadaten-Typ! Quartz Fehler!"
+hu = "Hibás metaadat típus! Quartz hiba!"
+sv = "Fel medatata typ! En bug hos oss (Quartz)"
 [system.game_output]
 en = "Minecraft Game Output"
 de = "Minecraft-Spielausgabe"
@@ -707,10 +707,10 @@ hu = "Minecraft játéknapló"
 sv = "Minecraft Log utmatning"
 
 [system.update.title]
-en = "Update Pandora?"
-de = "Pandora aktualisieren?"
-hu = "Frissíted a Pandorát?"
-sv = "Uppdatera Pandora?"
+en = "Update Quartz?"
+de = "Quartz aktualisieren?"
+hu = "Frissíted a Quartzot?"
+sv = "Uppdatera Quartz?"
 [system.update.current]
 en = "Current version: ${ver: &str}"
 de = "Aktuelle Version: ${ver: &str}"
@@ -2024,7 +2024,7 @@ hu = "Jelszó"
 sv = "Lösenord"
 [settings.proxy.launcher_only_note]
 en = "Note - Proxy settings only apply to the launcher, not the game itself"
-de = "Achtung - Proxyeinstellungen sind nur für Pandora, nicht für Minecraft"
+de = "Achtung - Proxyeinstellungen sind nur für Quartz, nicht für Minecraft"
 hu = "Megjegyzés - A proxy beállítások csak az indítóra hatnak, nem a játékra"
 sv = "Observera - Proxy inställningar gäller endast för launchern inte för själva spelet"
 
@@ -2122,3 +2122,135 @@ en = "Import the above selected from ${launcher: &str}"
 de = "Importiere das oben Ausgewählte von ${launcher: &str}"
 hu = "A fentiek közül kiválasztottak importálása innen: ${launcher: &str}"
 sv = "Importera det valda ovanstående från ${launcher: &str}"
+
+[tools.title]
+en = "Tools"
+de = "Werkzeuge"
+hu = "Eszközök"
+sv = "Verktyg"
+
+[tools.performance.title]
+en = "Performance"
+de = "Leistung"
+hu = "Teljesítmény"
+sv = "Prestanda"
+
+[tools.performance.subtitle]
+en = "Estimate how modded Minecraft may run on your hardware. One of many tools — not required for launching."
+de = "Schätze, wie modifiziertes Minecraft auf deiner Hardware laufen könnte. Nur eines von vielen Werkzeugen."
+hu = "Becsüld meg, hogyan futhat a modolt Minecraft a hardvereden. Csak az egyik eszköz a sok közül."
+sv = "Uppskatta hur moddad Minecraft kan köras på din hårdvara. Ett av många verktyg."
+
+[tools.performance.hardware]
+en = "Hardware"
+de = "Hardware"
+hu = "Hardver"
+sv = "Hårdvara"
+
+[tools.performance.cpu]
+en = "CPU"
+de = "CPU"
+hu = "CPU"
+sv = "CPU"
+
+[tools.performance.gpu]
+en = "GPU"
+de = "GPU"
+hu = "GPU"
+sv = "GPU"
+
+[tools.performance.ram]
+en = "System RAM"
+de = "System-RAM"
+hu = "Rendszer RAM"
+sv = "System-RAM"
+
+[tools.performance.workload]
+en = "Workload"
+de = "Auslastung"
+hu = "Terhelés"
+sv = "Belastning"
+
+[tools.performance.mod_count]
+en = "Mod count"
+de = "Mod-Anzahl"
+hu = "Modok száma"
+sv = "Antal mods"
+
+[tools.performance.allocated_ram]
+en = "Allocated RAM"
+de = "Zugewiesener RAM"
+hu = "Allokált RAM"
+sv = "Allokerat RAM"
+
+[tools.performance.render_distance]
+en = "Render distance"
+de = "Renderdistanz"
+hu = "Render távolság"
+sv = "Renderingsavstånd"
+
+[tools.performance.shaders]
+en = "Shaders enabled"
+de = "Shader aktiviert"
+hu = "Shaderek bekapcsolva"
+sv = "Shaders aktiverade"
+
+[tools.performance.optimization_mods]
+en = "Optimization mods (e.g. Sodium)"
+de = "Optimierungs-Mods (z. B. Sodium)"
+hu = "Optimalizáló modok (pl. Sodium)"
+sv = "Optimeringsmods (t.ex. Sodium)"
+
+[tools.performance.heavy_mods]
+en = "Heavy mods (Create, etc.)"
+de = "Schwere Mods (Create usw.)"
+hu = "Nehéz modok (Create stb.)"
+sv = "Tunga mods (Create m.m.)"
+
+[tools.performance.predict]
+en = "Estimated performance"
+de = "Geschätzte Leistung"
+hu = "Becsült teljesítmény"
+sv = "Uppskattad prestanda"
+
+[tools.performance.avg_fps]
+en = "Average FPS"
+de = "Durchschnittliche FPS"
+hu = "Átlagos FPS"
+sv = "Genomsnittlig FPS"
+
+[tools.performance.fps_range]
+en = "Typical range"
+de = "Typischer Bereich"
+hu = "Tipikus tartomány"
+sv = "Typiskt intervall"
+
+[tools.performance.rating]
+en = "Rating"
+de = "Bewertung"
+hu = "Értékelés"
+sv = "Betyg"
+
+[tools.performance.bottleneck]
+en = "Bottleneck"
+de = "Engpass"
+hu = "Szűk keresztmetszet"
+sv = "Flaskhals"
+
+[tools.performance.recommendations]
+en = "Recommendations"
+de = "Empfehlungen"
+hu = "Javaslatok"
+sv = "Rekommendationer"
+
+[tools.performance.refresh]
+en = "Refresh hardware"
+de = "Hardware aktualisieren"
+hu = "Hardver frissítése"
+sv = "Uppdatera hårdvara"
+
+[tools.performance.detecting]
+en = "Detecting hardware…"
+de = "Hardware wird erkannt…"
+hu = "Hardver felismerése…"
+sv = "Identifierar hårdvara…"

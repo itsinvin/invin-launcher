@@ -2303,7 +2303,7 @@ impl LaunchContext {
                 #[cfg(windows)]
                 name: Arc::from(OsStr::new("PandoraInstanceSandbox")),
                 #[cfg(windows)]
-                description: Arc::from(OsStr::new("Sandbox for Minecraft instances run by Pandora Launcher")),
+                description: Arc::from(OsStr::new("Sandbox for Minecraft instances run by Quartz Launcher")),
                 #[cfg(windows)]
                 self_elevate_for_acl_arg: Some(PandoraArg::from(OsStr::new("--internal-set-traverse-acls"))),
                 #[cfg(windows)]
@@ -2431,7 +2431,7 @@ impl LaunchContext {
             } else {
                 panic!("Unsupported platform")
             },
-            ArgumentExpansionKey::LauncherName => OsStr::new("PandoraLauncher").into(),
+            ArgumentExpansionKey::LauncherName => OsStr::new("QuartzLauncher").into(),
             ArgumentExpansionKey::LauncherVersion => OsStr::new("1.0.0").into(),
             ArgumentExpansionKey::Classpath => std::env::join_paths(&self.classpath).unwrap().into(),
             ArgumentExpansionKey::AuthPlayerName => OsStr::new(&*self.login_info.username).into(),

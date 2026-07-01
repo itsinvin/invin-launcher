@@ -8,7 +8,7 @@ use gpui_component::{
 use rustc_hash::FxHashSet;
 use strum::IntoEnumIterator;
 
-use crate::{component::{path_label::PathLabel, responsive_grid::ResponsiveGrid}, entity::{DataEntities, instance::InstanceEntries}, icon::PandoraIcon, pages::page::Page};
+use crate::{component::{path_label::PathLabel, responsive_grid::ResponsiveGrid}, entity::{DataEntities, instance::InstanceEntries}, icon::QuartzIcon, pages::page::Page};
 
 pub struct ImportPage {
     backend_handle: BackendHandle,
@@ -198,7 +198,7 @@ impl Render for ImportPage {
                 import_box = import_box.child(h_flex()
                     .gap_2()
                     .text_color(cx.theme().success_foreground)
-                    .child(PandoraIcon::Check)
+                    .child(QuartzIcon::Check)
                     .child("Detected launcher files")
                 );
                 if import_job.import_accounts {
@@ -232,7 +232,7 @@ impl Render for ImportPage {
                                             .gap_2()
                                             .line_height(rems(1.0))
                                             .text_color(cx.theme().warning_foreground)
-                                            .child(PandoraIcon::TriangleAlert)
+                                            .child(QuartzIcon::TriangleAlert)
                                             .child("Already exists")
                                         ).into_any_element()
                                 } else {
@@ -293,7 +293,7 @@ impl Render for ImportPage {
                 import_box = import_box.child(h_flex()
                     .gap_2()
                     .text_color(cx.theme().danger_foreground)
-                    .child(PandoraIcon::TriangleAlert)
+                    .child(QuartzIcon::TriangleAlert)
                     .child("Unable to detect launcher files")
                 );
             } else {

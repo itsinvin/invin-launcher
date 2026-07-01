@@ -10,7 +10,7 @@ use gpui_component::{
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    entity::{DataEntities, instance::InstanceEntry}, icon::PandoraIcon, interface_config::InterfaceConfig, pages::{instance::{content_subpage::InstanceContentSubpage, logs_subpage::InstanceLogsSubpage, quickplay_subpage::InstanceQuickplaySubpage, settings_subpage::InstanceSettingsSubpage}, page::Page}, root,
+    entity::{DataEntities, instance::InstanceEntry}, icon::QuartzIcon, interface_config::InterfaceConfig, pages::{instance::{content_subpage::InstanceContentSubpage, logs_subpage::InstanceLogsSubpage, quickplay_subpage::InstanceQuickplaySubpage, settings_subpage::InstanceSettingsSubpage}, page::Page}, root,
 };
 
 use super::content_subpage::ContentType;
@@ -47,19 +47,19 @@ impl Page for InstancePage {
 
         let button = match instance.status {
             InstanceStatus::NotRunning => {
-                Button::new("start_instance").success().icon(PandoraIcon::Play).label(t::instance::start::label()).on_click(
+                Button::new("start_instance").success().icon(QuartzIcon::Play).label(t::instance::start::label()).on_click(
                     move |_, window, cx| {
                         root::start_instance(id, name.clone(), None, &backend_handle, window, cx);
                     },
                 ).into_any_element()
             },
             InstanceStatus::Launching => {
-                Button::new("launching").warning().icon(PandoraIcon::Loader).label(t::instance::start::starting()).into_any_element()
+                Button::new("launching").warning().icon(QuartzIcon::Loader).label(t::instance::start::starting()).into_any_element()
             },
             InstanceStatus::Stopping => {
                 Button::new("stopping")
                     .danger()
-                    .icon(PandoraIcon::Loader)
+                    .icon(QuartzIcon::Loader)
                     .label(t::instance::start::stopping())
                     .on_click({
                         let backend_handle = backend_handle.clone();
@@ -73,7 +73,7 @@ impl Page for InstancePage {
                 ButtonGroup::new("running")
                     .child(Button::new("kill_instance")
                         .danger()
-                        .icon(PandoraIcon::Close)
+                        .icon(QuartzIcon::Close)
                         .label(t::instance::kill_instance())
                         .on_click({
                             let backend_handle = backend_handle.clone();
@@ -83,7 +83,7 @@ impl Page for InstancePage {
                         }))
                     .child(Button::new("start_again")
                         .success()
-                        .icon(PandoraIcon::Play)
+                        .icon(QuartzIcon::Play)
                         .on_click(move |_, window, cx| {
                             let name = name.clone();
                             let backend_handle = backend_handle.clone();
@@ -125,7 +125,7 @@ impl Page for InstancePage {
 
         let open_dot_minecraft_button = Button::new("open_dot_minecraft")
             .info()
-            .icon(PandoraIcon::FolderOpen)
+            .icon(QuartzIcon::FolderOpen)
             .label(t::instance::open_folder())
             .on_click({
             let dot_minecraft = instance.dot_minecraft_folder.clone();

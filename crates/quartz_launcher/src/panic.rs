@@ -95,7 +95,7 @@ impl std::fmt::Debug for PrettyBacktrace {
             "backtrace::backtrace::trace",
             "backtrace::capture::Backtrace::create",
             "backtrace::capture::Backtrace::new",
-            "pandora_launcher::panic::install_hook::{{closure}}",
+            "quartz_launcher::panic::install_hook::{{closure}}",
             "__rustc::rust_begin_unwind",
         ];
         let mut start = 0;

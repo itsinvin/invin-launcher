@@ -4,7 +4,7 @@ use gpui::{prelude::*, *};
 use gpui_component::{Selectable, Sizable, button::Button, h_flex, slider::{Slider, SliderEvent, SliderState}, v_flex};
 use schema::{minecraft_profile::SkinVariant, unique_bytes::UniqueBytes};
 
-use crate::{component::player_model::{self, PlayerModel, PlayerModelState}, icon::PandoraIcon};
+use crate::{component::player_model::{self, PlayerModel, PlayerModelState}, icon::QuartzIcon};
 
 pub struct PlayerModelWidget {
     player_model_state: Entity<PlayerModelState>,
@@ -254,7 +254,7 @@ impl Render for PlayerModelWidget {
                     .child(h_flex().w_full().justify_between().text_sm()
                         .child(format!("Yaw: {}°", yaw as i32))
                         .child(Button::new("play-yaw").compact().small()
-                            .icon(PandoraIcon::pause_play(self.animating_yaw))
+                            .icon(QuartzIcon::pause_play(self.animating_yaw))
                             .on_click(cx.listener(|widget, _, _, cx| {
                                 widget.animating_yaw = !widget.animating_yaw;
                                 widget.last_render = Instant::now();
@@ -265,7 +265,7 @@ impl Render for PlayerModelWidget {
                     .child(h_flex().w_full().justify_between().text_sm()
                         .child(format!("Pitch: {}°", pitch as i32))
                         .child(Button::new("play-pitch").compact().small()
-                            .icon(PandoraIcon::pause_play(self.animating_pitch))
+                            .icon(QuartzIcon::pause_play(self.animating_pitch))
                             .on_click(cx.listener(|widget, _, _, cx| {
                                 widget.animating_pitch = !widget.animating_pitch;
                                 widget.last_render = Instant::now();
@@ -276,7 +276,7 @@ impl Render for PlayerModelWidget {
                     .child(h_flex().w_full().justify_between().text_sm()
                         .child("Animation")
                         .child(Button::new("play-anim").compact().small()
-                            .icon(PandoraIcon::pause_play(self.animating_animation))
+                            .icon(QuartzIcon::pause_play(self.animating_animation))
                             .on_click(cx.listener(|widget, _, _, cx| {
                                 widget.animating_animation = !widget.animating_animation;
                                 widget.last_render = Instant::now();

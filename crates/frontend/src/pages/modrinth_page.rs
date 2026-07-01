@@ -16,7 +16,7 @@ use strum::IntoEnumIterator;
 use crate::{
     component::error_alert::ErrorAlert, entity::{
         DataEntities, instance::ContentStates, metadata::{AsMetadataResult, FrontendMetadata, FrontendMetadataResult}
-    }, icon::PandoraIcon, interface_config::InterfaceConfig, pages::page::Page, ui, format_downloads
+    }, icon::QuartzIcon, interface_config::InterfaceConfig, pages::page::Page, ui, format_downloads
 };
 
 pub struct ModrinthSearchPage {
@@ -97,22 +97,22 @@ pub fn get_primary_action(
     }
 }
 
-pub fn env_display(client_side: ModrinthSideRequirement, server_side: ModrinthSideRequirement) -> (PandoraIcon, SharedString) {
+pub fn env_display(client_side: ModrinthSideRequirement, server_side: ModrinthSideRequirement) -> (QuartzIcon, SharedString) {
     match (client_side, server_side) {
         (ModrinthSideRequirement::Required, ModrinthSideRequirement::Required) =>
-            (PandoraIcon::Globe, t::modrinth::environment::client_and_server().into()),
+            (QuartzIcon::Globe, t::modrinth::environment::client_and_server().into()),
         (ModrinthSideRequirement::Required, ModrinthSideRequirement::Unsupported) =>
-            (PandoraIcon::Computer, t::modrinth::environment::client_only().into()),
+            (QuartzIcon::Computer, t::modrinth::environment::client_only().into()),
         (ModrinthSideRequirement::Required, ModrinthSideRequirement::Optional) =>
-            (PandoraIcon::Computer, t::modrinth::environment::client_only_server_optional().into()),
+            (QuartzIcon::Computer, t::modrinth::environment::client_only_server_optional().into()),
         (ModrinthSideRequirement::Unsupported, ModrinthSideRequirement::Required) =>
-            (PandoraIcon::Router, t::modrinth::environment::server_only().into()),
+            (QuartzIcon::Router, t::modrinth::environment::server_only().into()),
         (ModrinthSideRequirement::Optional, ModrinthSideRequirement::Required) =>
-            (PandoraIcon::Router, t::modrinth::environment::server_only_client_optional().into()),
+            (QuartzIcon::Router, t::modrinth::environment::server_only_client_optional().into()),
         (ModrinthSideRequirement::Optional, ModrinthSideRequirement::Optional) =>
-            (PandoraIcon::Globe, t::modrinth::environment::client_or_server().into()),
+            (QuartzIcon::Globe, t::modrinth::environment::client_or_server().into()),
         _ =>
-            (PandoraIcon::Cpu, t::modrinth::environment::unknown_environment().into()),
+            (QuartzIcon::Cpu, t::modrinth::environment::unknown_environment().into()),
     }
 }
 
@@ -518,7 +518,7 @@ impl ModrinthSearchPage {
 
                 let downloads = h_flex()
                     .gap_1()
-                    .child(PandoraIcon::Download)
+                    .child(QuartzIcon::Download)
                     .child(format_downloads(hit.downloads));
 
                 let open_project_page = {
@@ -675,15 +675,15 @@ impl PrimaryAction {
         }.into()
     }
 
-    pub fn icon(&self) -> PandoraIcon {
+    pub fn icon(&self) -> QuartzIcon {
         match self {
-            PrimaryAction::Install => PandoraIcon::Download,
-            PrimaryAction::Reinstall => PandoraIcon::Download,
-            PrimaryAction::InstallLatest => PandoraIcon::Download,
-            PrimaryAction::CheckForUpdates => PandoraIcon::RefreshCcw,
-            PrimaryAction::ErrorCheckingForUpdates => PandoraIcon::TriangleAlert,
-            PrimaryAction::UpToDate => PandoraIcon::Check,
-            PrimaryAction::Update(..) => PandoraIcon::Download,
+            PrimaryAction::Install => QuartzIcon::Download,
+            PrimaryAction::Reinstall => QuartzIcon::Download,
+            PrimaryAction::InstallLatest => QuartzIcon::Download,
+            PrimaryAction::CheckForUpdates => QuartzIcon::RefreshCcw,
+            PrimaryAction::ErrorCheckingForUpdates => QuartzIcon::TriangleAlert,
+            PrimaryAction::UpToDate => QuartzIcon::Check,
+            PrimaryAction::Update(..) => QuartzIcon::Download,
         }
     }
 
@@ -911,7 +911,7 @@ impl Render for ModrinthSearchPage {
             .child(
                 Button::new("toggle-categories")
                     .label(t::instance::content::categories())
-                    .icon(if is_category_shown { PandoraIcon::ChevronDown } else { PandoraIcon::ChevronRight })
+                    .icon(if is_category_shown { QuartzIcon::ChevronDown } else { QuartzIcon::ChevronRight })
                     .when(!is_category_shown, |this| this.outline())
                     .on_click(move |_, _, _| {
                         show_categories.store(!is_category_shown, std::sync::atomic::Ordering::Relaxed);
@@ -946,7 +946,7 @@ impl Render for ModrinthSearchPage {
             .child(
                 Button::new("toggle-sort")
                     .label(t::instance::content::sort())
-                    .icon(if is_sort_shown { PandoraIcon::ChevronDown } else { PandoraIcon::ChevronRight })
+                    .icon(if is_sort_shown { QuartzIcon::ChevronDown } else { QuartzIcon::ChevronRight })
                     .when(!is_sort_shown, |this| this.outline())
                     .on_click(move |_, _, _| {
                         show_sort_options.store(!is_sort_shown, std::sync::atomic::Ordering::Relaxed);

@@ -11,7 +11,7 @@ use rustc_hash::FxHashMap;
 use schema::{minecraft_profile::{SkinState, SkinVariant}, unique_bytes::UniqueBytes};
 use uuid::Uuid;
 use crate::{
-    component::{player_model_widget::PlayerModelWidget, shrinking_text::ShrinkingText}, data_asset_loader::DataAssetLoader, entity::{DataEntities, account::AccountExt}, icon::PandoraIcon, interface_config::InterfaceConfig, pages::page::Page, png_render_cache::ImageTransformation, skin_thumbnail_cache::SkinThumbnailCache, skin_renderer::determine_skin_variant,
+    component::{player_model_widget::PlayerModelWidget, shrinking_text::ShrinkingText}, data_asset_loader::DataAssetLoader, entity::{DataEntities, account::AccountExt}, icon::QuartzIcon, interface_config::InterfaceConfig, pages::page::Page, png_render_cache::ImageTransformation, skin_thumbnail_cache::SkinThumbnailCache, skin_renderer::determine_skin_variant,
 };
 
 pub struct SkinsPage {
@@ -327,7 +327,7 @@ impl Render for SkinsPage {
                             .child(h_flex()
                                 .id("toggle-capes")
                                 .child(t::skins::capes())
-                                .child(PandoraIcon::ChevronLeft)
+                                .child(QuartzIcon::ChevronLeft)
                                 .on_click(|_, _, cx| {
                                     InterfaceConfig::get_mut(cx).collapse_capes_in_skins_page = false;
                                 })
@@ -371,7 +371,7 @@ impl Render for SkinsPage {
                                         .hover(|style| style.bg(secondary_hover))
                                 })
                                 .when(active, |this| {
-                                    this.child(Icon::new(PandoraIcon::Flag).absolute().right(padding).bottom(padding))
+                                    this.child(Icon::new(QuartzIcon::Flag).absolute().right(padding).bottom(padding))
                                 })
                                 .child(ShrinkingText::new(cape.alias.clone().into()))
                                 .on_click({
@@ -401,7 +401,7 @@ impl Render for SkinsPage {
                             .child(h_flex()
                                 .id("toggle-capes")
                                 .child(t::skins::capes())
-                                .child(PandoraIcon::ChevronDown)
+                                .child(QuartzIcon::ChevronDown)
                                 .on_click(|_, _, cx| {
                                     InterfaceConfig::get_mut(cx).collapse_capes_in_skins_page = true;
                                 }))
@@ -426,7 +426,7 @@ impl Render for SkinsPage {
                 .child(h_flex().max_h_6().child(t::skins::title()))
                 .child(Button::new("add-file")
                     .label(t::skins::add_from_file())
-                    .icon(PandoraIcon::File)
+                    .icon(QuartzIcon::File)
                     .success()
                     .small()
                     .compact()
@@ -469,7 +469,7 @@ impl Render for SkinsPage {
                         })
                     }))
                 .child(Popover::new("copy-skin-popover")
-                    .trigger(Button::new("copy-skin").label(t::skins::copy_from_player()).icon(PandoraIcon::Download).success().small().compact())
+                    .trigger(Button::new("copy-skin").label(t::skins::copy_from_player()).icon(QuartzIcon::Download).success().small().compact())
                     .gap_2()
                     .w_full()
                     .items_start()
@@ -503,7 +503,7 @@ impl Render for SkinsPage {
                             })
                         })))
                 .child(Popover::new("add-url-popover")
-                    .trigger(Button::new("add-url").label(t::skins::add_from_url()).icon(PandoraIcon::Link).success().small().compact())
+                    .trigger(Button::new("add-url").label(t::skins::add_from_url()).icon(QuartzIcon::Link).success().small().compact())
                     .gap_2()
                     .w_full()
                     .items_start()
@@ -536,7 +536,7 @@ impl Render for SkinsPage {
                         })))
                 .child(Button::new("open-folder")
                     .label(t::skins::open_folder())
-                    .icon(PandoraIcon::FolderOpen)
+                    .icon(QuartzIcon::FolderOpen)
                     .info()
                     .small()
                     .compact()
@@ -547,7 +547,7 @@ impl Render for SkinsPage {
                         })
                     }))
                 .child(Button::new("toggle-3d")
-                    .icon(if InterfaceConfig::get(cx).skin_list_show_3d { PandoraIcon::Image } else { PandoraIcon::Box })
+                    .icon(if InterfaceConfig::get(cx).skin_list_show_3d { QuartzIcon::Image } else { QuartzIcon::Box })
                     .label(if InterfaceConfig::get(cx).skin_list_show_3d { t::skins::switch_view::texture() } else { t::skins::switch_view::model() })
                     .small()
                     .compact()
@@ -621,10 +621,10 @@ impl Render for SkinsPage {
                     })
                     .child(skin_child)
                     .when_else(active, |this| {
-                        this.child(Icon::new(PandoraIcon::Flag).absolute().right(padding).bottom(padding))
+                        this.child(Icon::new(QuartzIcon::Flag).absolute().right(padding).bottom(padding))
                     }, |this| {
                         this.child(Button::new("delete-skin")
-                            .icon(PandoraIcon::Trash2)
+                            .icon(QuartzIcon::Trash2)
                             .block_mouse_except_scroll()
                             .danger()
                             .outline()

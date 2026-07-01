@@ -180,7 +180,7 @@ impl Processor {
             MessageToFrontend::CreateGameOutputWindow { receiver } => {
                 self.quit_coordinator.set_can_quit(false);
                 let options = WindowOptions {
-                    app_id: Some("PandoraLauncher".into()),
+                    app_id: Some("QuartzLauncher".into()),
                     window_min_size: Some(size(px(360.0), px(240.0))),
                     titlebar: Some(TitlebarOptions {
                         title: Some(t::system::game_output().into()),

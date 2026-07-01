@@ -14,7 +14,7 @@ use ustr::Ustr;
 use crate::{
     component::error_alert::ErrorAlert, entity::{
         DataEntities, instance::ContentStates, metadata::{AsMetadataResult, FrontendMetadata, FrontendMetadataResult}
-    }, icon::PandoraIcon, interface_config::InterfaceConfig, pages::page::Page, format_downloads
+    }, icon::QuartzIcon, interface_config::InterfaceConfig, pages::page::Page, format_downloads
 };
 
 pub struct CurseforgeSearchPage {
@@ -493,7 +493,7 @@ impl CurseforgeSearchPage {
 
                 let downloads = h_flex()
                     .gap_1()
-                    .child(PandoraIcon::Download)
+                    .child(QuartzIcon::Download)
                     .child(format_downloads(hit.download_count));
 
                 let primary_action = self.get_primary_action(hit.id, cx);
@@ -632,7 +632,7 @@ impl CurseforgeSearchPage {
                                     .text_sm()
                                     .text_color(theme.muted_foreground)
                                     .gap_1()
-                                    .child(PandoraIcon::Tags)
+                                    .child(QuartzIcon::Tags)
                                     .children(categories),
                             ),
                     )
@@ -678,15 +678,15 @@ impl PrimaryAction {
         }.into()
     }
 
-    pub fn icon(&self) -> PandoraIcon {
+    pub fn icon(&self) -> QuartzIcon {
         match self {
-            PrimaryAction::Install => PandoraIcon::Download,
-            PrimaryAction::Reinstall => PandoraIcon::Download,
-            PrimaryAction::InstallLatest => PandoraIcon::Download,
-            PrimaryAction::CheckForUpdates => PandoraIcon::RefreshCcw,
-            PrimaryAction::ErrorCheckingForUpdates => PandoraIcon::TriangleAlert,
-            PrimaryAction::UpToDate => PandoraIcon::Check,
-            PrimaryAction::Update(..) => PandoraIcon::Download,
+            PrimaryAction::Install => QuartzIcon::Download,
+            PrimaryAction::Reinstall => QuartzIcon::Download,
+            PrimaryAction::InstallLatest => QuartzIcon::Download,
+            PrimaryAction::CheckForUpdates => QuartzIcon::RefreshCcw,
+            PrimaryAction::ErrorCheckingForUpdates => QuartzIcon::TriangleAlert,
+            PrimaryAction::UpToDate => QuartzIcon::Check,
+            PrimaryAction::Update(..) => QuartzIcon::Download,
         }
     }
 
@@ -836,7 +836,7 @@ impl Render for CurseforgeSearchPage {
             .child(
                 Button::new("toggle-categories")
                     .label(t::instance::content::categories())
-                    .icon(if is_category_shown { PandoraIcon::ChevronDown } else { PandoraIcon::ChevronRight })
+                    .icon(if is_category_shown { QuartzIcon::ChevronDown } else { QuartzIcon::ChevronRight })
                     .when(!is_category_shown, |this| this.outline())
                     .on_click(move |_, _, _| {
                         show_categories.store(!is_category_shown, std::sync::atomic::Ordering::Relaxed);
@@ -868,7 +868,7 @@ impl Render for CurseforgeSearchPage {
             .child(
                 Button::new("toggle-sort")
                     .label(t::instance::content::sort())
-                    .icon(if is_sort_shown { PandoraIcon::ChevronDown } else { PandoraIcon::ChevronRight })
+                    .icon(if is_sort_shown { QuartzIcon::ChevronDown } else { QuartzIcon::ChevronRight })
                     .when(!is_sort_shown, |this| this.outline())
                     .on_click(move |_, _, _| {
                         show_sort.store(!is_sort_shown, std::sync::atomic::Ordering::Relaxed);

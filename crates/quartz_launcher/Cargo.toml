@@ -1,5 +1,5 @@
 [package]
-name = "pandora_launcher"
+name = "quartz_launcher"
 version.workspace = true
 edition.workspace = true
 build = "build.rs"

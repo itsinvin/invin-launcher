@@ -14,7 +14,7 @@ use uuid::Uuid;
 use crate::{
 	component::{horizontal_sections::HorizontalSections, named_dropdown::{NamedDropdown, NamedDropdownItem}, path_label::PathLabel},
 	entity::{DataEntities, account::{AccountEntries, AccountExt}, instance::InstanceEntry, metadata::{AsMetadataResult, FrontendMetadata, FrontendMetadataResult, FrontendMetadataState, TypelessFrontendMetadataResult}},
-	icon::PandoraIcon, interface_config::InterfaceConfig, pages::instances_page::VersionList, png_render_cache,
+	icon::QuartzIcon, interface_config::InterfaceConfig, pages::instances_page::VersionList, png_render_cache,
 };
 
 #[derive(PartialEq, Eq)]
@@ -742,7 +742,7 @@ impl Render for InstanceSettingsSubpage {
                 t::common::icon(),
                 {
                     let mut row = h_flex().gap_2()
-                        .child(Button::new("icon").icon(crate::icon::PandoraIcon::Plus).label(t::instance::select_icon()).on_click({
+                        .child(Button::new("icon").icon(crate::icon::QuartzIcon::Plus).label(t::instance::select_icon()).on_click({
                             let entity = cx.entity();
                             move |_, window, cx| {
                                 let entity = entity.clone();
@@ -1084,7 +1084,7 @@ impl Render for InstanceSettingsSubpage {
             }))
             .child(Button::new("export")
                 .label(t::instance::export::action())
-                .icon(PandoraIcon::Archive)
+                .icon(QuartzIcon::Archive)
                 .overflow_x_hidden()
                 .on_click({
                     let instance = self.instance.clone();

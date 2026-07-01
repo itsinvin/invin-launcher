@@ -74,9 +74,9 @@ pub fn start(
     quit_coordinator: QuitCoordinator,
 ) {
     let user_agent = if let Some(version) = option_env!("PANDORA_RELEASE_VERSION") {
-        format!("PandoraLauncher/{version} (https://github.com/Moulberry/PandoraLauncher)")
+        format!("QuartzLauncher/{version} (https://github.com/Moulberry/QuartzLauncher)")
     } else {
-        "PandoraLauncher/dev (https://github.com/Moulberry/PandoraLauncher)".to_string()
+        "QuartzLauncher/dev (https://github.com/Moulberry/QuartzLauncher)".to_string()
     };
 
     let http_client = Arc::new(reqwest_client::ReqwestClient::user_agent(&user_agent).unwrap());
@@ -220,10 +220,10 @@ pub fn open_main_window(data: &DataEntities, cx: &mut App) -> AnyWindowHandle {
     crate::root::set_should_render_custom_titlebar(use_custom_titlebar);
     let handle = cx.open_window(
         WindowOptions {
-            app_id: Some("PandoraLauncher".into()),
+            app_id: Some("QuartzLauncher".into()),
             window_min_size: Some(size(px(500.0), px(250.0))),
             titlebar: Some(TitlebarOptions {
-                title: Some("Pandora Launcher".into()),
+                title: Some("Quartz Launcher".into()),
                 appears_transparent: use_custom_titlebar,
                 ..Default::default()
             }),
