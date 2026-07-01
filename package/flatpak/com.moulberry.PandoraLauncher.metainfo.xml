@@ -34,11 +34,11 @@
     <release version="v2.5.0" date="2026-01-13" type="stable"/>
   </releases>
   <url type="homepage">https://pandora.moulberry.com/</url>
-  <url type="bugtracker">https://github.com/Moulberry/QuartzLauncher/issues</url>
-  <url type="faq">https://github.com/Moulberry/QuartzLauncher?tab=readme-ov-file#faq</url>
-  <url type="donation">https://moulberry.com/</url>
-  <url type="contact">https://github.com/Moulberry</url>
-  <url type="vcs-browser">https://github.com/Moulberry/QuartzLauncher</url>
+  <url type="bugtracker">https://github.com/itsinvin/quartz-launcher/issues</url>
+  <url type="faq">https://github.com/itsinvin/quartz-launcher?tab=readme-ov-file#faq</url>
+  <url type="donation">https://github.com/itsinvin</url>
+  <url type="contact">https://github.com/itsinvin</url>
+  <url type="vcs-browser">https://github.com/itsinvin/quartz-launcher</url>
   <requires>
     <internet>always</internet>
   </requires>

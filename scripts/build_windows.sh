@@ -40,7 +40,7 @@ if [[ -n "$CARGO_PACKAGER_SIGN_PRIVATE_KEY" ]]; then
     \"downloads\": {
         \"x86_64\": {
             \"executable\": {
-                \"download\": \"https://github.com/Moulberry/QuartzLauncher/releases/download/v$version/QuartzLauncher-Windows-x86_64-Portable.exe\",
+                \"download\": \"https://github.com/itsinvin/quartz-launcher/releases/download/v$version/QuartzLauncher-Windows-x86_64-Portable.exe\",
                 \"size\": $(wc -c < dist/QuartzLauncher-Windows-x86_64-Portable.exe),
                 \"sha1\": \"$(sha1sum dist/QuartzLauncher-Windows-x86_64-Portable.exe | cut -d ' ' -f 1)\",
                 \"sig\": \"$(cat dist/QuartzLauncher-Windows-x86_64-Portable.exe.sig)\"

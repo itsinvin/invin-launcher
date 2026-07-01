@@ -74,9 +74,9 @@ pub fn start(
     quit_coordinator: QuitCoordinator,
 ) {
     let user_agent = if let Some(version) = option_env!("PANDORA_RELEASE_VERSION") {
-        format!("QuartzLauncher/{version} (https://github.com/Moulberry/QuartzLauncher)")
+        format!("QuartzLauncher/{version} (https://github.com/itsinvin/quartz-launcher)")
     } else {
-        "QuartzLauncher/dev (https://github.com/Moulberry/QuartzLauncher)".to_string()
+        "QuartzLauncher/dev (https://github.com/itsinvin/quartz-launcher)".to_string()
     };
 
     let http_client = Arc::new(reqwest_client::ReqwestClient::user_agent(&user_agent).unwrap());

@@ -41,7 +41,7 @@ pub fn spawn(command: PandoraCommand, sandbox: PandoraSandbox, context: &mut Spa
     let winsta_sids = if sandbox.grant_winsta_writeattributes {
         // Ideally we could just add the appcontainer's sid to winsta0 directly,
         // but for some reason this triggers a bug in chrome.
-        // See https://github.com/Moulberry/QuartzLauncher/issues/415
+        // See https://github.com/itsinvin/quartz-launcher/issues/415
 
         let mut group_sids = std::ptr::null_mut();
         let mut group_sid_count = 0;
