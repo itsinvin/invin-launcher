@@ -41,13 +41,13 @@ if [[ -n "$CARGO_PACKAGER_SIGN_PRIVATE_KEY" ]]; then
     \"downloads\": {
         \"x86_64\": {
             \"executable\": {
-                \"download\": \"https://github.com/itsinvin/quartz-launcher/releases/download/v$version/QuartzLauncher-Linux-x86_64-Portable\",
+                \"download\": \"https://github.com/itsinvin/QuartzLauncher/releases/download/v$version/QuartzLauncher-Linux-x86_64-Portable\",
                 \"size\": $(wc -c < dist/QuartzLauncher-Linux-x86_64-Portable),
                 \"sha1\": \"$(sha1sum dist/QuartzLauncher-Linux-x86_64-Portable | cut -d ' ' -f 1)\",
                 \"sig\": \"$(cat dist/QuartzLauncher-Linux-x86_64-Portable.sig)\"
             },
             \"appimage\": {
-                \"download\": \"https://github.com/itsinvin/quartz-launcher/releases/download/v$version/QuartzLauncher-Linux-x86_64.AppImage\",
+                \"download\": \"https://github.com/itsinvin/QuartzLauncher/releases/download/v$version/QuartzLauncher-Linux-x86_64.AppImage\",
                 \"size\": $(wc -c < dist/QuartzLauncher-Linux-x86_64.AppImage),
                 \"sha1\": \"$(sha1sum dist/QuartzLauncher-Linux-x86_64.AppImage | cut -d ' ' -f 1)\",
                 \"sig\": \"$(cat dist/QuartzLauncher-Linux-x86_64.AppImage.sig)\"

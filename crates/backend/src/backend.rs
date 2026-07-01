@@ -60,9 +60,9 @@ fn build_http_clients(user_agent: &str, proxy_config: &ProxyConfig, proxy_passwo
 
 pub fn start(runtime: tokio::runtime::Runtime, launcher_dir: PathBuf, send: FrontendHandle, self_handle: BackendHandle, recv: BackendReceiver, quit_handler: QuitCoordinator) {
     let user_agent = if let Some(version) = option_env!("PANDORA_RELEASE_VERSION") {
-        format!("QuartzLauncher/{version} (https://github.com/itsinvin/quartz-launcher)")
+        format!("QuartzLauncher/{version} (https://github.com/itsinvin/QuartzLauncher)")
     } else {
-        "QuartzLauncher/dev (https://github.com/itsinvin/quartz-launcher)".to_string()
+        "QuartzLauncher/dev (https://github.com/itsinvin/QuartzLauncher)".to_string()
     };
 
     let directories = Arc::new(LauncherDirectories::new(launcher_dir));

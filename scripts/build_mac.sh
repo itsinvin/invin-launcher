@@ -49,13 +49,13 @@ if [[ -n "$CARGO_PACKAGER_SIGN_PRIVATE_KEY" ]]; then
     \"downloads\": {
         \"universal\": {
             \"executable\": {
-                \"download\": \"https://github.com/itsinvin/quartz-launcher/releases/download/v$version/QuartzLauncher-macOS-Universal-Portable\",
+                \"download\": \"https://github.com/itsinvin/QuartzLauncher/releases/download/v$version/QuartzLauncher-macOS-Universal-Portable\",
                 \"size\": $(wc -c < dist/QuartzLauncher-macOS-Universal-Portable),
                 \"sha1\": \"$(sha1sum dist/QuartzLauncher-macOS-Universal-Portable | cut -d ' ' -f 1)\",
                 \"sig\": \"$(cat dist/QuartzLauncher-macOS-Universal-Portable.sig)\"
             },
             \"app\": {
-                \"download\": \"https://github.com/itsinvin/quartz-launcher/releases/download/v$version/QuartzLauncher.app.tar.gz\",
+                \"download\": \"https://github.com/itsinvin/QuartzLauncher/releases/download/v$version/QuartzLauncher.app.tar.gz\",
                 \"size\": $(wc -c < dist/QuartzLauncher.app.tar.gz),
                 \"sha1\": \"$(sha1sum dist/QuartzLauncher.app.tar.gz | cut -d ' ' -f 1)\",
                 \"sig\": \"$(cat dist/QuartzLauncher.app.tar.gz.sig)\"

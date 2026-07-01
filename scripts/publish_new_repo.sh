@@ -3,7 +3,7 @@
 # Run this locally with your GitHub credentials (gh auth login).
 set -euo pipefail
 
-REPO="${1:-itsinvin/quartz-launcher}"
+REPO="${1:-itsinvin/QuartzLauncher}"
 BRANCH="${2:-main}"
 
 if ! command -v gh >/dev/null; then
